@@ -27,51 +27,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Customize to your needs...
-export PATH=./bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:/Users/humblepatience/bin/svn_misc/:opt/local/bin/:/opt/local/lib/postgresql84/bin/:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/humblepatience/bin:/Users/humblepatience/bin/svn_misc:/usr/local/Cellar/libxml2/2.7.8/bin
-source /Users/humblepatience/bin/svn_misc/svn-shortcuts
-export PATH=/usr/local/bin:$PATH
-export PATH=./bin:$PATH
-
-#unsetopt auto_name_dirs
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
-#alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-#export EDITOR='mvim -f -c "au VimLeave * !open -a Terminal"'
-#export EDITOR='mvim'
-export EDITOR='vim'
-
-
-export SVN_ROOT="svn+ssh://trac.hq.courseadvisor.com/home/svn/" 
-
-alias svnstatus="svn status --ignore-externals"
-alias svnup="svn up --ignore-externals"
-alias svnswitch="svn switch --ignore-externals"
-export PAGER=less
-
-#RPROMPT='[%~]' 
-#PROMPT='[%~]' 
-#PROMPT='%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} ' 
-#echo -ne "\e]1;$PWD\a"
-
-
-# [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-
-
-export PAGER=less
-export LESS="-iMSx4 -FX"
-
-export LESS="-erX"
-export MYSQL_PS1=" [\d]> "
-#export EDITOR="$HOME/bin/mate -w"
-  
-
-[[ $TERM = "screen" ]] && rvm use default
-DISABLE_AUTO_TITLE=true
-export DISABLE_AUTO_TITLE="true"
-rvm_project_rvmrc=1
-cd .
-source .rvmrc
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 

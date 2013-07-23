@@ -6,3 +6,5 @@
   co = checkout
   df = diff
   lg = log -p
+[credential]
+	helper = osxkeychain
