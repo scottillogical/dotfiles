@@ -1,0 +1,8 @@
+[alias]
+  bv = branch -v 
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
