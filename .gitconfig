@@ -8,3 +8,8 @@
   lg = log -p
 [credential]
 	helper = osxkeychain
+[user]
+	name = Scott Schulthess
+	email = scottschulthess@gmail.com
+[core]
+	editor = /usr/bin/vim
