@@ -1,4 +1,24 @@
 " leader stuff
+"
+set noswapfile
+
+" ----------------------------------------------------------------------------
+"  "  Text Formatting
+"  "
+"  ----------------------------------------------------------------------------
+"
+set autoindent             " automatic indent new lines
+set smartindent            " be smart about it
+inoremap # X<BS>#
+set nowrap                 " do not wrap lines
+set softtabstop=2          " yep, two
+set shiftwidth=2           " ..
+set tabstop=4
+set expandtab              " expand tabs to spaces
+set nosmarttab             " fuck tabs
+set formatoptions+=n       " support for numbered/bullet lists
+"set textwidth=80           " wrap at 80 chars by default
+set virtualedit=block      " allow virtual edit in visual block ..
 
 let mapleader = ","
 
@@ -76,3 +96,6 @@ augroup END
 autocmd BufNewFile,BufRead *.markdown setlocal spell spelllang=en_us
 autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
 "
+"
+" autosave
+au FocusLost * silent! wa
