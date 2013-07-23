@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/vim-vuzzyfinder"]
 	path = .vim/bundle/FuzzyFinder
 	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule ".vim/bundle/vim-slim"]
+	path = .vim/bundle/vim-slim
+	url = https://github.com/slim-template/vim-slim.git
