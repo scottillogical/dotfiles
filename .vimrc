@@ -105,3 +105,10 @@ au FocusLost * silent! wa
 
 "show rvm status in vim
 set statusline+=%{rvm#statusline()}
+
+
+
+"set backupdirs
+set backupdir=/tmp
+set directory=/tmp
+
