@@ -99,3 +99,9 @@ autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
 "
 " autosave
 au FocusLost * silent! wa
+
+
+
+
+"show rvm status in vim
+set statusline+=%{rvm#statusline()}
