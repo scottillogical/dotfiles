@@ -27,3 +27,7 @@
 chromedriver.log
 screenshot.png
 ~
+.un~
+*~
+set backupdir=$TEMP//
+set directory=$TEMP//
