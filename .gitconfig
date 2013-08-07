@@ -13,5 +13,8 @@
 	email = scottschulthess@gmail.com
 [core]
 	editor = /usr/bin/vim
+	excludesfile = /Users/scott/.gitignore
 [color]
 	ui = true
+[heroku]
+	account = work
