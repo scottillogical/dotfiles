@@ -19,15 +19,14 @@
 /spec/routing
 /spec/views
 
-
-# ignore vim temp files
-*~*
 .DS_Store
 .tddium*
 chromedriver.log
 screenshot.png
-~
-.un~
+.netrwhist
+
+# vim ignores
+*.s[a-w][a-z]
+*.un~
+Session.vim
 *~
-set backupdir=$TEMP//
-set directory=$TEMP//
