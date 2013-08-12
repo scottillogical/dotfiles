@@ -1,3 +1,5 @@
+
+
 " leader stuff
 "
 set noswapfile
@@ -89,14 +91,10 @@ augroup CommandTExtension
   autocmd BufWritePost * CommandTFlush
 augroup END
 
-" supposedly makes paste work easier
-"
-"
 " spell check on markdown files
 autocmd BufNewFile,BufRead *.markdown setlocal spell spelllang=en_us
 autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
-"
-"
+
 " autosave
 au FocusLost * silent! wa
 
@@ -112,3 +110,6 @@ set statusline+=%{rvm#statusline()}
 set backupdir=/tmp
 set directory=/tmp
 
+" better tab completion on filenames
+set wildmode=longest,list,full
+set wildmenu
