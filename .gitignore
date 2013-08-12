@@ -30,3 +30,7 @@ screenshot.png
 *.un~
 Session.vim
 *~
+
+
+# for submodules - ignore
+.netrwhist
