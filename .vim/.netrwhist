@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/scott'
 let g:netrw_dirhist_2='/Users/scott/code/studentadvisor'
 let g:netrw_dirhist_3='/Users/scott/code/conversion-funnel'
 let g:netrw_dirhist_4='/Users/scott/code/harmony'
+let g:netrw_dirhist_5='/Users/scott/dotfiles'
