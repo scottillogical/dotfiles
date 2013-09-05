@@ -43,3 +43,6 @@
 [submodule "vim-rails"]
 	path = vim-rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule ".vim/bundle/vitality.vim"]
+	path = .vim/bundle/vitality.vim
+	url = https://github.com/sjl/vitality.vim.git
