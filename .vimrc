@@ -54,9 +54,6 @@ autocmd BufRead,BufNewFile *.html.erb set filetype=eruby
 "allows you to paste the same thing twice
 "noremap p pgvy 
 
-" switch between relative and absolute line numbers on movement
-au FocusLost * :set number
-au FocusGained * :set relativenumber
 
 
 
