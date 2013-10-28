@@ -12,7 +12,6 @@
 --type-set=less=.less
 --type-set=cucumber=.feature
 
---ignore-dir=vendor
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=doc
