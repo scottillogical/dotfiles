@@ -1,4 +1,4 @@
-// Copyright 2010 Wincent Colaiuta. All rights reserved.
+// Copyright 2010-2013 Wincent Colaiuta. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
@@ -23,7 +23,14 @@
 
 #include <ruby.h>
 
-extern VALUE CommandTMatch_initialize(int argc, VALUE *argv, VALUE self);
-extern VALUE CommandTMatch_matches(VALUE self);
-extern VALUE CommandTMatch_score(VALUE self);
-extern VALUE CommandTMatch_to_s(VALUE self);
+// struct for representing an individual match
+typedef struct {
+    VALUE   path;
+    double  score;
+} match_t;
+
+extern void calculate_match(VALUE str,
+                            VALUE needle,
+                            VALUE always_show_dot_files,
+                            VALUE never_show_dot_files,
+                            match_t *out);

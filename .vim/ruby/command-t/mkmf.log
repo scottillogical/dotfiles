@@ -1,9 +1,49 @@
-have_header: checking for ruby.h... -------------------- yes
+find_header: checking for float.h... -------------------- yes
 
-"xcrun cc -E -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin11.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE     -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common    conftest.c -o conftest.i"
+"/usr/local/bin/gcc-4.2 -E -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/lib/ruby/1.8/i686-darwin13.0.2 -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/ -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/  -O3 -Wno-error=shorten-64-to-32  -pipe -fno-common    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <float.h>
+/* end */
+
+--------------------
+
+find_header: checking for ruby.h... -------------------- yes
+
+"/usr/local/bin/gcc-4.2 -E -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/lib/ruby/1.8/i686-darwin13.0.2 -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/ -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/  -O3 -Wno-error=shorten-64-to-32  -pipe -fno-common    conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include <ruby.h>
+/* end */
+
+--------------------
+
+find_header: checking for stdlib.h... -------------------- yes
+
+"/usr/local/bin/gcc-4.2 -E -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/lib/ruby/1.8/i686-darwin13.0.2 -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/ -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/  -O3 -Wno-error=shorten-64-to-32  -pipe -fno-common    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <stdlib.h>
+/* end */
+
+--------------------
+
+find_header: checking for string.h... -------------------- yes
+
+"/usr/local/bin/gcc-4.2 -E -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/lib/ruby/1.8/i686-darwin13.0.2 -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/ -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/  -O3 -Wno-error=shorten-64-to-32  -pipe -fno-common    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <string.h>
+/* end */
+
+--------------------
+
+have_header: checking for pthread.h... -------------------- yes
+
+"/usr/local/bin/gcc-4.2 -E -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/lib/ruby/1.8/i686-darwin13.0.2 -I. -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/ -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/Users/sschulthess/.rbenv/versions/1.8.7-p374/include -I/opt/X11/include/  -O3 -Wno-error=shorten-64-to-32  -pipe -fno-common    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <pthread.h>
 /* end */
 
 --------------------

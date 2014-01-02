@@ -68,8 +68,11 @@ If your Vim lacks support you'll see an error message like this:
 
   E319: Sorry, the command is not available in this version
 
-The version of Vim distributed with Mac OS X does not include Ruby support,
-while MacVim does; it is available from:
+The version of Vim distributed with OS X may not include Ruby support (for
+exmaple, Snow Leopard, which was the current version of OS X when Command-T
+was first released, did not support Ruby in the system Vim, but the current
+version of OS X at the time of writing, Mavericks, does). All recent versions
+of MacVim come with Ruby support; it is available from:
 
   http://github.com/b4winckler/macvim/downloads
 
@@ -85,8 +88,14 @@ compatible Ruby install. "Compatible" means the same version as Vim itself
 links against. If you use a different version then Command-T is unlikely
 to work (see TROUBLE-SHOOTING below).
 
-On Mac OS X Snow Leopard, the system comes with Ruby 1.8.7 and all recent
-versions of MacVim (the 7.2 snapshots and 7.3) are linked against it.
+On OS X Snow Leopard, Lion and Mountain Lion, the system comes with Ruby 1.8.7
+and all recent versions of MacVim (the 7.2 snapshots and 7.3) are linked
+against it.
+
+On OS X Mavericks, the default system ruby is 2.0, but MacVim continues to
+link against 1.8.7, which is also present on the system at:
+
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 
 On Linux and similar platforms, the linked version of Ruby will depend on
 your distribution. You can usually find this out by examining the
@@ -112,8 +121,8 @@ it to work responsively even on directory hierarchies containing enormous
 numbers of files. As such, a C compiler is required in order to build the
 extension and complete the installation.
 
-On Mac OS X, this can be obtained by installing the Xcode Tools that come on
-the Mac OS X install disc.
+On OS X, this can be obtained by installing the Xcode Tools from the App
+Store.
 
 On Windows, the RubyInstaller Development Kit can be used to conveniently
 install the necessary tool chain:
@@ -129,8 +138,12 @@ folder.
 
 INSTALLATION                                    *command-t-installation*
 
-Command-T is distributed as a "vimball" which means that it can be installed
-by opening it in Vim and then sourcing it:
+You can install Command-T by obtaining the source files and building the C
+extension. The recommended way to get the source is by using a plug-in
+management system such as Pathogen (see |command-t-pathogen|).
+
+Command-T is also distributed as a "vimball" which means that it can be
+installed by opening it in Vim and then sourcing it:
 
   :e command-t.vba
   :so %
@@ -156,9 +169,17 @@ of the following commands:
   rvm use system
   rbenv local system
 
+Note: If you are on OS X Mavericks and compiling against MacVim, the default
+system Ruby is 2.0 but MacVim still links against the older 1.8.7 Ruby that is
+also bundled with the system; in this case the build command becomes:
+
+  cd ~/.vim/ruby/command-t
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb
+  make
+
 Note: Make sure you compile targeting the same architecture Vim was built for.
 For instance, MacVim binaries are built for i386, but sometimes GCC compiles
-for x86_64. First you have to check the platfom Vim was built for:
+for x86_64. First you have to check the platform Vim was built for:
 
   vim --version
   ...
@@ -170,6 +191,10 @@ and make sure you use the correct ARCHFLAGS during compilation:
   export ARCHFLAGS="-arch i386"
   make
 
+Note: If you are on Fedora 17+, you can install Command-T from the system
+repository with:
+
+  su -c 'yum install vim-command-t'
 
 MANAGING USING PATHOGEN                         *command-t-pathogen*
 
@@ -206,9 +231,9 @@ Or you can switch to a specific release with:
 
 After installing or updating you must build the extension:
 
-  cd ~/.vim/bundle/command-t
-  bundle install
-  rake make
+  cd ~/.vim/bundle/command-t/ruby/command-t
+  ruby extconf.rb
+  make
 
 While the Vimball installation automatically generates the help tags, under
 Pathogen it is necessary to do so explicitly from inside Vim:
@@ -224,7 +249,7 @@ linked against at compile time. For example, if one is 32-bit and the other is
 64-bit, or one is from the Ruby 1.9 series and the other is from the 1.8
 series, then the plug-in is not likely to work.
 
-As such, on Mac OS X, I recommend using the standard Ruby that comes with the
+As such, on OS X, I recommend using the standard Ruby that comes with the
 system (currently 1.8.7) along with the latest version of MacVim (currently
 version 7.3). If you wish to use custom builds of Ruby or of MacVim (not
 recommmended) then you will have to take extra care to ensure that the exact
@@ -323,6 +348,7 @@ has focus:
     <C-p>       select previous file in the file listing
     <Up>        select previous file in the file listing
     <C-f>       flush the cache (see |:CommandTFlush| for details)
+    <C-q>       place the current matches in the quickfix window
     <C-c>       cancel (dismisses file listing)
 
 The following is also available on terminals which support it:
@@ -420,7 +446,7 @@ changes via |:let|.
 Following is a list of all available options:
 
                                                *g:CommandTMaxFiles*
-  |g:CommandTMaxFiles|                           number (default 10000)
+  |g:CommandTMaxFiles|                           number (default 30000)
 
       The maximum number of files that will be considered when scanning the
       current directory. Upon reaching this number scanning stops. This
@@ -435,7 +461,7 @@ Following is a list of all available options:
       skipped.
 
                                                *g:CommandTMaxCachedDirectories*
-  |g:CommandTMaxCachedDirectories|                           number (default 1)
+  |g:CommandTMaxCachedDirectories|               number (default 1)
 
       The maximum number of directories whose contents should be cached when
       recursively scanning. With the default value of 1, each time you change
@@ -528,6 +554,23 @@ Following is a list of all available options:
       When this setting is off (the default) the matches in the |:CommandTTag|
       listing do not include filenames.
 
+                                                *g:CommandTHighlightColor*
+  |g:CommandTHighlightColor|                      string (default: 'PmenuSel')
+
+      Specifies the highlight color that will be used to show the currently
+      selected item in the match listing window.
+
+                                                *g:CommandTWildIgnore*
+  |g:CommandTWildIgnore|                          string (default: none)
+
+      Optionally override Vim's global |'wildignore'| setting during Command-T
+      seaches. If you wish to supplement rather than replace the global
+      setting, you can use a syntax like:
+
+        let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*"
+
+      See also |command-t-wildignore|.
+
 As well as the basic options listed above, there are a number of settings that
 can be used to override the default key mappings used by Command-T. For
 example, to set <C-x> as the mapping for cancelling (dismissing) the Command-T
@@ -585,6 +628,9 @@ Following is a list of all map settings and their defaults:
                                       *g:CommandTRefreshMap*
                 |g:CommandTRefreshMap|  <C-f>
 
+                                      *g:CommandTQuickfixMap*
+               |g:CommandTQuickfixMap|  <C-q>
+
                                       *g:CommandTCursorLeftMap*
              |g:CommandTCursorLeftMap|  <Left>
                                       <C-h>
@@ -619,6 +665,11 @@ settings can be used to control behavior:
 
       See the |'wildignore'| documentation for more information.
 
+      If you want to influence Command-T's file exclusion behavior without
+      changing your global |'wildignore'| setting, you can use the
+      |g:CommandTWildIgnore| setting to apply an override that takes effect
+      only during Command-T searches.
+
 
 AUTHORS                                         *command-t-authors*
 
@@ -626,14 +677,16 @@ Command-T is written and maintained by Wincent Colaiuta <win@wincent.com>.
 Other contributors that have submitted patches include (in alphabetical
 order):
 
-  Anthony Panozzo           Mike Lundy                Steven Moazami
-  Daniel Hahler             Nate Kane                 Sung Pae
-  Felix Tjandrawibawa       Nicholas Alpi             Thomas Pelletier
-  Gary Bernhardt            Nadav Samet               Victor Hugo Borja
-  Jeff Kreeftmeijer         Noon Silk                 Woody Peterson
-  Lucas de Vries            Rainux Luo                Yan Pritzker
-  Marian Schubert           Scott Bronson             Zak Johnson
-  Matthew Todd              Seth Fowler
+  Andy Waite                Matthew Todd              Steven Moazami
+  Anthony Panozzo           Mike Lundy                Sung Pae
+  Daniel Hahler             Nate Kane                 Thomas Pelletier
+  Felix Tjandrawibawa       Nicholas Alpi             Victor Hugo Borja
+  Gary Bernhardt            Nadav Samet               Vít Ondruch
+  Ivan Ukhov                Noon Silk                 Woody Peterson
+  Jeff Kreeftmeijer         Paul Jolly                Yan Pritzker
+  Lucas de Vries            Rainux Luo                Zak Johnson
+  Marcus Brito              Scott Bronson
+  Marian Schubert           Seth Fowler
 
 As this was the first Vim plug-in I had ever written I was heavily influenced
 by the design of the LustyExplorer plug-in by Stephen Bach, which I understand
@@ -711,7 +764,7 @@ PayPal to win@wincent.com:
 
 LICENSE                                         *command-t-license*
 
-Copyright 2010-2012 Wincent Colaiuta. All rights reserved.
+Copyright 2010-2013 Wincent Colaiuta. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -735,6 +788,36 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 HISTORY                                         *command-t-history*
+
+1.6.1 (22 December 2013)
+
+- defer processor count detection until runtime (makes it possible to sensibly
+  build Command-T on one machine and use it on another)
+
+1.6 (16 December 2013)
+
+- on systems with POSIX threads (such as OS X and Linux), Command-T will use
+  threads to compute match results in parallel, resulting in a large speed
+  boost that is especially noticeable when navigating large projects
+
+1.5.1 (23 September 2013)
+
+- exclude large benchmark fixture file from source exports (patch from Vít
+  Ondruch)
+
+1.5 (18 September 2013)
+
+- don't scan "pathological" filesystem structures (ie. circular or
+  self-referential symlinks; patch from Marcus Brito)
+- gracefully handle files starting with "+" (patch from Ivan Ukhov)
+- switch default selection highlight color for better readability (suggestion
+  from André Arko), but make it possible to configure via the
+  |g:CommandTHighlightColor| setting
+- added a mapping to take the current matches and put then in the quickfix
+  window
+- performance improvements, particularly noticeable with large file
+  hierarchies
+- added |g:CommandTWildIgnore| setting (patch from Paul Jolly)
 
 1.4 (20 June 2012)
 

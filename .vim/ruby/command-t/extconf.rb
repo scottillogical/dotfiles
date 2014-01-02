@@ -1,4 +1,4 @@
-# Copyright 2010 Wincent Colaiuta. All rights reserved.
+# Copyright 2010-2013 Wincent Colaiuta. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -23,12 +23,22 @@
 
 require 'mkmf'
 
-def missing item
-  puts "couldn't find #{item} (required)"
-  exit 1
+def header(item)
+  unless find_header(item)
+    puts "couldn't find #{item} (required)"
+    exit 1
+  end
 end
+
+# mandatory headers
+header('float.h')
+header('ruby.h')
+header('stdlib.h')
+header('string.h')
+
+# optional headers
+have_header('pthread.h') # sets HAVE_PTHREAD_H if found
 
 RbConfig::MAKEFILE_CONFIG['CC'] = ENV['CC'] if ENV['CC']
 
-have_header('ruby.h') or missing('ruby.h')
 create_makefile('ext')
