@@ -64,3 +64,14 @@ source ~/dotfiles/zsh-notify/notify.plugin.zsh
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=8
 export SYS_NOTIFIER=/usr/local/bin/terminal-notifier
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+eval "$(rbenv init -)"
+
+
+export TNS_ADMIN=/etc
+export ORACLE_DEV_USERNAME=zipcar
+export ORACLE_DEV_PASSWORD=nokia548
+export ORACLE_TEST_USERNAME=zipcar_base
+export ORACLE_TEST_PASSWORD=nokia548
+export ORACLE_CI_PASSWORD=nokia548
