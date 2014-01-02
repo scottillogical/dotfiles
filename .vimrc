@@ -96,17 +96,22 @@ autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
 au FocusLost * silent! wa
 
 
-
-
-"show rvm status in vim
-set statusline+=%{rvm#statusline()}
-
-
-
 "set backupdirs
 set backupdir=/tmp
 set directory=/tmp
+set swapfile
+set dir=/tmp
+set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
+set dir=~/.vim/tmp
+set undodir=~/.vim/tmp
+
 
 " better tab completion on filenames
 set wildmode=longest,list,full
 set wildmenu
+
+
+" use silver searcher instead of ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
