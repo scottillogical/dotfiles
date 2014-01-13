@@ -82,15 +82,15 @@ set statusline=%f "tail of the filename
 
 
 " Refreshes commandt regularuly
-augroup CommandTExtension
-  autocmd!
-  autocmd FocusGained * CommandTFlush
-  autocmd BufWritePost * CommandTFlush
-augroup END
+"augroup CommandTExtension
+  "autocmd!
+  "autocmd FocusGained * CommandTFlush
+  "autocmd BufWritePost * CommandTFlush
+"augroup END
 
 " spell check on markdown files
-autocmd BufNewFile,BufRead *.markdown setlocal spell spelllang=en_us
-autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
+"autocmd BufNewFile,BufRead *.markdown setlocal spell spelllang=en_us
+"autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
 
 " autosave
 au FocusLost * silent! wa
@@ -115,3 +115,6 @@ set wildmenu
 
 " use silver searcher instead of ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+
+

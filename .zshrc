@@ -70,8 +70,4 @@ eval "$(rbenv init -)"
 
 
 export TNS_ADMIN=/etc
-export ORACLE_DEV_USERNAME=zipcar
-export ORACLE_DEV_PASSWORD=nokia548
-export ORACLE_TEST_USERNAME=zipcar_base
-export ORACLE_TEST_PASSWORD=nokia548
-export ORACLE_CI_PASSWORD=nokia548
+export JRUBY_OPTS="--1.9 -J-XX:MaxPermSize=256m -Xcompile.invokedynamic=false -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF --headless"
