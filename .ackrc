@@ -19,4 +19,5 @@
 --ignore-dir=spec/fixtures
 --ignore-dir=public
 --ignore-dir=bin
+--ignore-dir=test/coverage
 
