@@ -42,9 +42,12 @@ set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
 set wildignore+=vendor/bundle/**
 set wildignore+=vendor/ruby/**
+set wildignore+=test/coverage/**
 set wildignore+=steak/**
 set wildignore+=/tmp/**
 set wildignore+=/log/**
+set wildignore+=app/nls/**
+set wildignore+=node_modules/**
 set noswapfile 
 set undofile "persistent undo
 set ignorecase  "ignore case in searches
