@@ -20,4 +20,7 @@
 --ignore-dir=public
 --ignore-dir=bin
 --ignore-dir=test/coverage
+--ignore-dir=dist
+--ignore-dir=node_modules
+--ignore-dir=vendor
 
