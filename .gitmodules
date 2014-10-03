@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule ".vim/bundle/underscore-templates"]
+	path = .vim/bundle/underscore-templates
+	url = https://github.com/aaronj1335/underscore-templates.vim.git
