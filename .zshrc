@@ -67,19 +67,18 @@ export NOTIFY_COMMAND_COMPLETE_TIMEOUT=8
 export SYS_NOTIFIER=/usr/local/bin/terminal-notifier
 
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="/Applications/MAMP/Library/bin/:$PATH"
 
 export PATH="/usr/local/bin:$PATH"
 eval "$(rbenv init -)"
 
 
 export TNS_ADMIN=/etc
-#export JRUBY_OPTS="--1.9 -J-XX:MaxPermSize=256m -Xcompile.invokedynamic=false -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF --headless"
-#export JRUBY_OPTS="--client -J-d32 -J-XX:MaxPermSize=256m -Xms256m -Xmx512m -Xcompile.invokedynamic=false -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF --headless "
 
 export JRUBY_OPTS='--1.9 -J-Xmx1024m -J-XX:MaxPermSize=256m -Xcompile.invokedynamic=false -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF --headless -J-XX:+CMSClassUnloadingEnabled -J-XX:+UseConcMarkSweepGC'
 source ~/.private_info
 
-#export DYLD_LIBRARY_PATH=/Users/sschulthess/Downloads/instantclient_11_2
 export DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2
 
 export NLS_LANGUAGE='AMERICAN'
@@ -87,9 +86,10 @@ export NLS_LANGUAGE='AMERICAN'
 export JAVACMD=`which java`
 export GRUNT_NOTIFY=true
 
-autoload -U predict-on
-zle -N predict-on
-zle -N predict-off
-bindkey '^Z'   predict-on
-bindkey '^X^Z' predict-off
-zstyle ':predict' verbose 'yes'
+
+source ~/dotfiles/zsh-notify/notify.plugin.zsh
+export JRUBY_HOME=~/.rbenv/versions/jruby-1.7.4
+
+
+export PRESALES_REMOTE_USER=sschulthess
+export PRESALES_LOCAL_DRUPAL=/Users/sschulthess/code/zipcar-presales/web
