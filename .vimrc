@@ -226,3 +226,12 @@ command -nargs=? G call GitGrep(<f-args>)
 let g:syntastic_ruby_checkers=['']
 
 autocmd BufRead,BufNewFile *.md setlocal spell
+let g:syntastic_debug_file = '~/syntastic.log'
+let g:syntastic_ruby_mri_exec = '~/.rbenv/versions/1.9.3-p484/bin/ruby'
+let g:syntastic_ruby_checkers=['mri']
+let g:syntastic_check_on_open=0
+
+
+" source: http://drydevelopment.com/blog/vim-pbcopy-on-os-x
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
