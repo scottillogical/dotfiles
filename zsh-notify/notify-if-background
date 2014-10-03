@@ -29,7 +29,7 @@ title=$otitle[2]
 message=$(<&0)
 
 [[ -z "$SYS_NOTIFIER" ]] \
-  && SYS_NOTIFIER="/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier"
+  && SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
 
 [[ -z "$GROWL_NOTIFIER" ]] \
   && GROWL_NOTIFIER="/usr/local/bin/growlnotify"
@@ -39,7 +39,7 @@ if [[ "$TERM_PROGRAM" == 'iTerm.app' ]]; then
 elif [[ "$TERM_PROGRAM" == 'Apple_Terminal' ]]; then
   term_id='com.apple.terminal'
 else
-  echo "Unsupported terminal: $TERM_PROGRAM" > /dev/stderr 
+  # echo "Unsupported terminal: $TERM_PROGRAM" > /dev/stderr 
   return 1;
 fi
 
@@ -59,5 +59,13 @@ fi
 # growlnotify "$@" < /dev/stdin
 
 
-  "$SYS_NOTIFIER" -activate "$term_id" -title "$title" -message "$message" 1>/dev/null 
+if [[ -x "$SYS_NOTIFIER" ]]; then
+  "$SYS_NOTIFIER" -activate "$term_id" -sender "$term_id" -title "$title" -message "$message" 1>/dev/null 
+elif [[ -x "$GROWL_NOTIFIER" ]]; then
+  [[ ! -z "$icon" ]] && icon_switch="--iconpath $icon"
+  echo "$message" | "$GROWL_NOTIFIER" "$title" 
+else
+  echo "No notifier program found." > /dev/stderr
+  return 1
+fi
 
