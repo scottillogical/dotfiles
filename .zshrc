@@ -46,22 +46,13 @@ plugins=(rbenv tmux gitfast git-extras)
 
 source $ZSH/oh-my-zsh.sh
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# Customize to your needs...
-#
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
 # for postgres.app
 export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
 #DISABLE_AUTO_TITLE=true
-
-
-#source ~/dotfiles/zsh-notify/notify.plugin.zsh
 
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=8
 export SYS_NOTIFIER=/usr/local/bin/terminal-notifier
@@ -73,23 +64,5 @@ export PATH="/Applications/MAMP/Library/bin/:$PATH"
 export PATH="/usr/local/bin:$PATH"
 eval "$(rbenv init -)"
 
-
-export TNS_ADMIN=/etc
-
-export JRUBY_OPTS='--1.9 -J-Xmx1024m -J-XX:MaxPermSize=256m -Xcompile.invokedynamic=false -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF --headless -J-XX:+CMSClassUnloadingEnabled -J-XX:+UseConcMarkSweepGC'
 source ~/.private_info
-
-export DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2
-
-export NLS_LANGUAGE='AMERICAN'
-
-export JAVACMD=`which java`
-export GRUNT_NOTIFY=true
-
-
-source ~/dotfiles/zsh-notify/notify.plugin.zsh
-export JRUBY_HOME=~/.rbenv/versions/jruby-1.7.4
-
-
-export PRESALES_REMOTE_USER=sschulthess
-export PRESALES_LOCAL_DRUPAL=/Users/sschulthess/code/zipcar-presales/web
+source ~/.oracle_settings

@@ -17,6 +17,7 @@
 /spec/requests
 /spec/routing
 /spec/views
+/.vim/tmp
 
 .DS_Store
 .tddium*
