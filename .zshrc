@@ -1,68 +1,93 @@
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# ANTIGEN CONFIG BELOW
+#
+source ~/antigen.zsh
+antigen use oh-my-zsh
+antigen theme robbyrussell
+antigen bundle git
+#antigen bundle zsh-users/zsh-completions
+#antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle ssh-agent
+antigen bundle ruby
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle marzocchi/zsh-notify --branch=next-iterm
+antigen apply
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# theme 
+DEFAULT_USER=sschulthess
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
 
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+# self explanitory
+DISABLE_AUTO_TITLE=true
 
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
+source ~/.zipcar_settings
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
 
-# Uncomment following line if you want to disable autosetting terminal title.
+# set editor to vim
+export VISUAL=vim
+export EDITOR=$VISUAL
 
-DISABLE_AUTO_TITLE="true"
+# type in a project name to name toit
 
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
+# add sbin to path
+export PATH="/usr/local/sbin:$PATH"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rbenv tmux gitfast git-extras)
-
-source $ZSH/oh-my-zsh.sh
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# for postgres.app
-export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-
-#DISABLE_AUTO_TITLE=true
-
-export NOTIFY_COMMAND_COMPLETE_TIMEOUT=8
-export SYS_NOTIFIER=/usr/local/bin/terminal-notifier
-
+# rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.composer/vendor/bin:$PATH"
-export PATH="/Applications/MAMP/Library/bin/:$PATH"
-
-export PATH="/usr/local/bin:$PATH"
 eval "$(rbenv init -)"
 
-source ~/.private_info
-source ~/.oracle_settings
+export PATH=/Users/sschulthess/bin:$PATH
+
+export GEM_SOURCE=http://yarp.dev
+
+export NVM_DIR="/Users/sschulthess/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# huamn readable file size, colors, hdiden files
+alias ls='ls -alhG'
+
+# gvm
+#[[ -s "/Users/sschulthess/.gvm/scripts/gvm" ]] && source "/Users/sschulthess/.gvm/scripts/gvm"
+
+# completion
+zstyle ':completion:*' matcher-list 'l:|=* r:|=*' 
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+autoload -Uz compinit
+compinit
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+parse_namespace() {
+  sav namespace | cut -f 3 -d ' '
+}
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GOROOT=/usr/local/opt/go/libexec
+#sav_namespace() {
+#  sav namespace | cut -f 3 -d ' '
+#}
+#export PS1 = ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info) {$(sav_namespace)}
+#
+sav_nuke() {
+  for app in $( sav ls -a --format bland | cut -f1 -d' ' ); do
+    sav rm ${app}
+    sleep 1
+  done
+  for svcid in $( sav ls -s --format bland | cut -f2 -d' ' ); do
+    sav rmid ${svcid}
+    sleep 1
+  done
+}
+
+# auto ls when you cd
+function cd {
+  builtin cd "$@" && ls -F 
+}
+
