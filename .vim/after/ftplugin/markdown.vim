@@ -1,3 +1,3 @@
 set wrap
 set linebreak
-set columns=100
+"set columns=100

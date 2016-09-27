@@ -1,5 +1,23 @@
+set nocompatible              " be iMproved, required
+call plug#begin('~/.vim/plugged')
+Plug 'vim-scripts/YankRing.vim'
+Plug 'mileszs/ack.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'ervandew/supertab'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go'
+Plug 'plasticboy/vim-markdown'
+Plug 'vim-airline/vim-airline-themes'
+"if has('mac')
+  Plug 'altercation/vim-colors-solarized'
+"endif
+call plug#end() 
+filetype off                  " required
 " Vim misc defaults
-set nocompatible           " vim behaves better not compatible with vi
 set noswapfile     	   " they are annoying
 filetype on 
 filetype plugin indent on  " indent
@@ -37,8 +55,8 @@ set statusline+=%l
 syntax on
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
-set autowrite              "
-inoremap # X<BS>#
+set autowrite              
+inoremap # X<BS>#          " ???
 set wrap                 " wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
@@ -164,4 +182,5 @@ let g:syntastic_disabled_filetypes=['go']
 " use with /\%>80v.\+ to higliht
 " or set colorcolumn=72
 set hlsearch
+
 

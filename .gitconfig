@@ -1,20 +1,19 @@
-[alias]
-  bv = branch -v 
-  st = status
-  ci = commit
-  br = branch
-  co = checkout
-  df = diff
-  lg = log -p
-[credential]
-	helper = osxkeychain
 [user]
 	name = Scott Schulthess
 	email = scottschulthess@gmail.com
+
+[hub]
+protocol = https
+
 [core]
-	editor = /usr/bin/vim
-	excludesfile = /Users/scott/.gitignore
+	excludesfile = /Users/sschulthess/.gitignore_global
+[diff]
+	compactionHeuristic = 1
+[pager]
+	log = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+	show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+	diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+[interactive]
+	diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
 [color]
 	ui = true
-[heroku]
-	account = work

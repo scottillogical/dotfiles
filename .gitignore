@@ -34,3 +34,6 @@ Session.vim
 
 # for submodules - ignore
 .vim/.netrwhist
+
+.vim/plugged
+.vim/.netrwhist
