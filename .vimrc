@@ -10,6 +10,7 @@ Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline-themes'
 "if has('mac')
@@ -36,9 +37,7 @@ set encoding=utf-8
 command E Explore
 
 " Tell vim where it put stuff
-set backupdir=/tmp
-set directory=/tmp
-set dir=/tmp
+set backupdir=~/.vim/tmp
 set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
@@ -79,16 +78,15 @@ autocmd BufRead *.coffee set textwidth=100
 
 " Leader maps
 let mapleader = ","
-map <leader>b :FufBuffer<CR>
+map <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>p :CtrlP<CR>
 map <leader>f :NERDTreeFind<CR>
 map <leader>l <C-^>
 map <leader>n :NERDTreeToggle<CR>
 "#nmap <silent> <leader>g :TestVisit<CR>
 map <leader>o :TlistToggle<CR>
 map <leader>m @:<CR> " repeat last command
-map <leader>p :CtrlP
 noremap <leader>r :GoRun %<CR> "  go run current file
-map <leader>t :CtrlP
 map <silent> <leader>t :! !!<CR>
 
 "autocmd FileType go nmap <leader>b  <Plug>(go-build)
@@ -116,7 +114,6 @@ set wildignore+=doc/**
 set wildignore+=catalog/**
 
 " Misc
-execute pathogen#infect()
 "cabbrev E Explore " not sure if this is still necessary
 
 " Use ag instead of ack if avail
@@ -184,3 +181,4 @@ let g:syntastic_disabled_filetypes=['go']
 set hlsearch
 
 
+let g:vim_markdown_folding_disabled = 1 "disable vim-markdown folding
