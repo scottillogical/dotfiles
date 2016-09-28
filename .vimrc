@@ -55,7 +55,6 @@ syntax on
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
 set autowrite              
-inoremap # X<BS>#          " ???
 set wrap                 " wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
