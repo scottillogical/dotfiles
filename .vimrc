@@ -9,13 +9,15 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go'
+if (has('mac'))
+  Plug 'fatih/vim-go'
+endif
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline-themes'
-"if has('mac')
-  Plug 'altercation/vim-colors-solarized'
-"endif
+Plug 'altercation/vim-colors-solarized'
+Plug 'bronson/vim-trailing-whitespace'
+
 call plug#end() 
 filetype off                  " required
 " Vim misc defaults
@@ -55,7 +57,6 @@ syntax on
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
 set autowrite              
-inoremap # X<BS>#          " ???
 set wrap                 " wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
@@ -83,7 +84,6 @@ nnoremap <leader>p :CtrlP<CR>
 map <leader>f :NERDTreeFind<CR>
 map <leader>l <C-^>
 map <leader>n :NERDTreeToggle<CR>
-"#nmap <silent> <leader>g :TestVisit<CR>
 map <leader>o :TlistToggle<CR>
 map <leader>m @:<CR> " repeat last command
 noremap <leader>r :GoRun %<CR> "  go run current file
