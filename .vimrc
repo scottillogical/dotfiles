@@ -11,14 +11,16 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go'
+if (has('mac'))
+  Plug 'fatih/vim-go'
+  Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+endif
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
-if has('mac')
-  Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-endif
+Plug 'bronson/vim-trailing-whitespace'
+
 call plug#end() 
 filetype off                  " required
 " Vim misc defaults
@@ -93,7 +95,6 @@ nnoremap <leader>t :CtrlP<CR>
 map <leader>f :NERDTreeFind<CR>
 map <leader>l <C-^>
 map <leader>n :NERDTreeToggle<CR>
-"#nmap <silent> <leader>g :TestVisit<CR>
 map <leader>o :TlistToggle<CR>
 map <leader>m @:<CR> " repeat last command
 noremap <leader>r :GoRun %<CR> "  go run current file
@@ -185,7 +186,6 @@ let g:go_metalinter_autosave = 1
 
 " Disalbe synatstic as it doesnt work with vim-go
 let g:syntastic_disabled_filetypes=['go']
-
 
 " use with /\%>80v.\+ to higliht
 " or set colorcolumn=72
