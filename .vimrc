@@ -2,9 +2,10 @@ set nocompatible              " be iMproved, required
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/YankRing.vim'
 Plug 'mileszs/ack.vim'
-Plug 'elixir-lang/vim-elixir'
+Plug 'jeetsukumaran/vim-indentwise'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/syntastic'
+Plug 'fatih/vim-go'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
@@ -196,3 +197,20 @@ let g:vim_markdown_folding_disabled = 1 "disable vim-markdown folding
 
 " disable cucumber because it sucks
 let g:syntastic_cucumber_checkers=['']
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=vendor/bundle/**
+set wildignore+=vendor/ruby/**
+set wildignore+=test/coverage/**
+set wildignore+=bundle
+set wildignore+=steak/**
+set wildignore+=bundle/**
+set wildignore+=dist/**
+set wildignore+=/tmp/**
+set wildignore+=/log/**
+set wildignore+=app/nls/**
+set wildignore+=node_modules/**
+set wildignore+=vendor/bower/**
+set wildignore+=doc/**
+set wildignore+=catalog/**
+set wildignore+=vendor/**
