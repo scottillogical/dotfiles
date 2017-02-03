@@ -2,15 +2,18 @@ set nocompatible              " be iMproved, required
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/YankRing.vim'
 Plug 'mileszs/ack.vim'
+Plug 'elixir-lang/vim-elixir'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 if (has('mac'))
   Plug 'fatih/vim-go'
+  Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 endif
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -32,6 +35,10 @@ set wildmode=longest,list,full " better expansion
 set wildmenu
 set incsearch "incremental search on / searches
 
+" context swpcific suuper tab completion, good for gocode
+let g:SuperTabDefaultCompletionType = "context"
+
+set nohlsearch  " disable search highlighting
 scriptencoding utf-8
 set encoding=utf-8
 
@@ -77,17 +84,22 @@ autocmd FileType ruby setlocal textwidth=80
 autocmd BufRead,BufNewFile *.html.erb set filetype=eruby
 autocmd BufRead *.coffee set textwidth=100
 
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
 " Leader maps
 let mapleader = ","
 map <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>t :CtrlP<CR>
 map <leader>f :NERDTreeFind<CR>
 map <leader>l <C-^>
 map <leader>n :NERDTreeToggle<CR>
 map <leader>o :TlistToggle<CR>
 map <leader>m @:<CR> " repeat last command
 noremap <leader>r :GoRun %<CR> "  go run current file
-map <silent> <leader>t :! !!<CR>
+noremap <Leader>a :Ack <cword><cr> # Ack curent word
+au FileType go nmap <Leader>s <Plug>(go-implements)
 
 "autocmd FileType go nmap <leader>b  <Plug>(go-build)
 "autocmd FileType go nmap <leader>r  <Plug>(go-run) " go run entire package
@@ -175,10 +187,12 @@ let g:go_metalinter_autosave = 1
 " Disalbe synatstic as it doesnt work with vim-go
 let g:syntastic_disabled_filetypes=['go']
 
-
 " use with /\%>80v.\+ to higliht
 " or set colorcolumn=72
 set hlsearch
 
 
 let g:vim_markdown_folding_disabled = 1 "disable vim-markdown folding
+
+" disable cucumber because it sucks
+let g:syntastic_cucumber_checkers=['']
