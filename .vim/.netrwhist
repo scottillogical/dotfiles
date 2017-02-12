@@ -1,3 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Users/sschulthess/code/reservations-api/app/controllers'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/sschulthess/git/core-api'
+let g:netrw_dirhist_2='/Users/sschulthess/git/pooling-api'
+let g:netrw_dirhist_3='/Users/sschulthess/git/vagrant/zipcar-vagrant-dev'
+let g:netrw_dirhist_4='/Users/sschulthess/git/zipcar-rails-admin-api'
+let g:netrw_dirhist_5='/Users/sschulthess/go/src/stash.zipcar.com/scm/sav/savannah-router.git'
+let g:netrw_dirhist_6='/Users/sschulthess/git/bridge-ui'
+let g:netrw_dirhist_7='/Users/sschulthess/git/savannah-deployments/som/dev'
+let g:netrw_dirhist_8='/Users/sschulthess/git/mongo-boshrelease/packages'
+let g:netrw_dirhist_9='/Users/sschulthess/git/mongo-boshrelease/jobs/mongo/templates/bin'

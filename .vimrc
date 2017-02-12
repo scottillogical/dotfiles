@@ -83,6 +83,7 @@ autocmd FileType javascript setlocal textwidth=80
 autocmd FileType coffee setlocal textwidth=80
 autocmd FileType ruby setlocal textwidth=80
 autocmd BufRead,BufNewFile *.html.erb set filetype=eruby
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 autocmd BufRead *.coffee set textwidth=100
 
 
@@ -101,13 +102,29 @@ map <leader>m @:<CR> " repeat last command
 noremap <leader>r :GoRun %<CR> "  go run current file
 noremap <Leader>a :Ack <cword><cr> # Ack curent word
 au FileType go nmap <Leader>s <Plug>(go-implements)
-
-"autocmd FileType go nmap <leader>b  <Plug>(go-build)
-"autocmd FileType go nmap <leader>r  <Plug>(go-run) " go run entire package
+au FileType go nmap <leader>gt <Plug>(go-test)
+autocmd FileType go nmap <leader>m  <Plug>(go-build)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
  
 
-"Run tests
-
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=vendor/bundle/**
+set wildignore+=vendor/ruby/**
+set wildignore+=test/coverage/**
+set wildignore+=bundle
+set wildignore+=steak/**
+set wildignore+=bundle/**
+set wildignore+=dist/**
+set wildignore+=/tmp/**
+set wildignore+=/log/**
+set wildignore+=app/nls/**
+set wildignore+=node_modules/**
+set wildignore+=vendor/bower/**
+set wildignore+=doc/**
+set wildignore+=catalog/**
+set wildignore+=vendor/**
 " Wildignore stuff so that we don't have to search it
 set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
@@ -176,13 +193,12 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
-"let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
+let g:syntastic_go_checkers = ['govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
+" let g:go_list_type = "quickfix" temporarily disabled to see if this fixes
+" the ack.vim loses quickfix on write
 let g:go_metalinter_autosave = 1
-"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+"let g:go_metalinter_autosave_enabled = ['']
 
 
 " Disalbe synatstic as it doesnt work with vim-go
@@ -190,27 +206,10 @@ let g:syntastic_disabled_filetypes=['go']
 
 " use with /\%>80v.\+ to higliht
 " or set colorcolumn=72
-set hlsearch
-
 
 let g:vim_markdown_folding_disabled = 1 "disable vim-markdown folding
 
 " disable cucumber because it sucks
 let g:syntastic_cucumber_checkers=['']
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=vendor/bundle/**
-set wildignore+=vendor/ruby/**
-set wildignore+=test/coverage/**
-set wildignore+=bundle
-set wildignore+=steak/**
-set wildignore+=bundle/**
-set wildignore+=dist/**
-set wildignore+=/tmp/**
-set wildignore+=/log/**
-set wildignore+=app/nls/**
-set wildignore+=node_modules/**
-set wildignore+=vendor/bower/**
-set wildignore+=doc/**
-set wildignore+=catalog/**
-set wildignore+=vendor/**
+let g:ctrlp_map = '<c-d>'
+let g:ctrlp_cmd = 'CtrlD'

@@ -9,7 +9,7 @@ antigen bundle ssh-agent
 antigen bundle ruby
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle marzocchi/zsh-notify --branch=next-iterm
+antigen bundle marzocchi/zsh-notify 
 antigen bundle robbyrussell/oh-my-zsh plugins/z
 antigen apply
 
@@ -68,7 +68,7 @@ eval "$(jenv init -)"
 export SDKMAN_DIR="/Users/sschulthess/.sdkman"
 [[ -s "/Users/sschulthess/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/sschulthess/.sdkman/bin/sdkman-init.sh"
 
-export CDPATH=~/git:~/
+export CDPATH=~/git:$GOPATH/src/stash.zipcar.com/scm/sav
 
 # http://stackoverflow.com/questions/3964068/zsh-automatically-run-ls-after-every-cd
 function chpwd() {
@@ -76,3 +76,6 @@ function chpwd() {
   ls -a
 }
 
+
+export PS1="$PS1 
+~ "
