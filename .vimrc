@@ -22,11 +22,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bronson/vim-trailing-whitespace'
 
-call plug#end() 
+call plug#end()
 filetype off                  " required
 " Vim misc defaults
 set noswapfile     	   " they are annoying
-filetype on 
+filetype on
 filetype plugin indent on  " indent
 set ignorecase             " ignore case in searches
 set undofile               " persistent undo
