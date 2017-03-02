@@ -1,7 +1,9 @@
 set nocompatible              " be iMproved, required
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/YankRing.vim'
+Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
+Plug 'elzr/vim-json'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/syntastic'
@@ -12,6 +14,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
+Plug 'Shougo/neocomplete'
 if (has('mac'))
   Plug 'fatih/vim-go'
   Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
@@ -20,13 +23,12 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
-Plug 'bronson/vim-trailing-whitespace'
 
-call plug#end() 
+call plug#end()
 filetype off                  " required
 " Vim misc defaults
 set noswapfile     	   " they are annoying
-filetype on 
+filetype on
 filetype plugin indent on  " indent
 set ignorecase             " ignore case in searches
 set undofile               " persistent undo
@@ -56,7 +58,7 @@ set undodir=~/.vim/tmp
 
 
 " Status bar customization
-set laststatus=2            
+set laststatus=2
 set statusline=%f "tail of the filenamj
 set statusline+=%l
 
@@ -64,7 +66,7 @@ set statusline+=%l
 syntax on
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
-set autowrite              
+set autowrite
 set wrap                 " wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
@@ -102,11 +104,12 @@ map <leader>m @:<CR> " repeat last command
 noremap <leader>r :GoRun %<CR> "  go run current file
 noremap <Leader>a :Ack <cword><cr> # Ack curent word
 au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>gc <Plug>(go-callers)
 au FileType go nmap <leader>gt <Plug>(go-test)
 autocmd FileType go nmap <leader>m  <Plug>(go-build)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
- 
+
 
 set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
@@ -125,6 +128,7 @@ set wildignore+=vendor/bower/**
 set wildignore+=doc/**
 set wildignore+=catalog/**
 set wildignore+=vendor/**
+set wildignore+=vendor
 " Wildignore stuff so that we don't have to search it
 set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
@@ -172,44 +176,51 @@ set t_Co=16
 let g:airline_section_b   =''
 
 
+
+let g:vim_json_syntax_conceal = 0
+let g:syntastic_json_checkers = ['jsonlint']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_enable_go_checker = 1
-let g:syntastic_elixir_checkers = ['elixir']
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+autocmd BufWritePre * :%s/\s\+$//e
+set viminfo='100,\"2500,:200,%,n~/.viminfo
 
-" GO  vim -go
+let g:vim_markdown_folding_disabled = 1 "disable vim-markdown folding
+
+let g:syntastic_cucumber_checkers=['']
+let g:ctrlp_map = '<c-d>'
+let g:ctrlp_cmd = 'CtrlD'
+
+
+
+" ========== VIM-GO PLUGIN ==========
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_auto_type_info = 0 "type info (|:GoInfo|) for the word under the cursor automatically.
 let g:go_fmt_command = "goimports"
-let g:syntastic_go_checkers = ['govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-" let g:go_list_type = "quickfix" temporarily disabled to see if this fixes
+" enable synstatic go
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck'] " enable synstatic go
+let g:go_list_type = "quickfix" " for syntastic
 " the ack.vim loses quickfix on write
-let g:go_metalinter_autosave = 1
+""let g:go_metalinter_autosave = 1#
+""let g:go_metalinter_enabled = ['']
 "let g:go_metalinter_autosave_enabled = ['']
 
 
-" Disalbe synatstic as it doesnt work with vim-go
-let g:syntastic_disabled_filetypes=['go']
 
-" use with /\%>80v.\+ to higliht
-" or set colorcolumn=72
+" =============== NerdTree Plguin =========
+let g:NERDTreeWinSize = 30
 
-let g:vim_markdown_folding_disabled = 1 "disable vim-markdown folding
 
-" disable cucumber because it sucks
-let g:syntastic_cucumber_checkers=['']
-let g:ctrlp_map = '<c-d>'
-let g:ctrlp_cmd = 'CtrlD'
