@@ -237,3 +237,4 @@ function! SetGoOptions()
   :call tagbar#autoopen(0)
 endfunction
 nnoremap <leader>v :TagbarToggle<CR>
+let g:tagbar_autoshowtag = 2
