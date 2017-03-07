@@ -93,13 +93,14 @@ autocmd BufRead *.coffee set textwidth=100
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Leader maps
+" =================================================
 let mapleader = ","
 map <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
 map <leader>f :NERDTreeFind<CR>
 map <leader>l <C-^>
 map <leader>n :NERDTreeToggle<CR>
-map <leader>o :TlistToggle<CR>
 map <leader>m @:<CR> " repeat last command
 noremap <leader>r :GoRun %<CR> "  go run current file
 noremap <Leader>a :Ack <cword><cr> # Ack curent word
@@ -109,6 +110,7 @@ au FileType go nmap <leader>gt <Plug>(go-test)
 autocmd FileType go nmap <leader>m  <Plug>(go-build)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gs :GoGuruScope stash.zipcar.com/scm/sav/savannah.git
 
 
 set wildignore+=vendor/rails/**
@@ -126,6 +128,9 @@ set wildignore+=app/nls/**
 set wildignore+=node_modules/**
 set wildignore+=vendor/bower/**
 set wildignore+=doc/**
+set wildignore+=docs/**
+set wildignore+=doc
+set wildignore+=docs
 set wildignore+=catalog/**
 set wildignore+=vendor/**
 set wildignore+=vendor
@@ -224,3 +229,11 @@ let g:go_list_type = "quickfix" " for syntastic
 let g:NERDTreeWinSize = 30
 
 
+
+autocmd FileType go call SetGoOptions()
+" ====== TAGBAR =======
+let g:tagbar_left=1
+function! SetGoOptions()
+  :call tagbar#autoopen(0)
+endfunction
+nnoremap <leader>v :TagbarToggle<CR>
