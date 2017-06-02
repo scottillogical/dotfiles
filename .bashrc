@@ -18,6 +18,9 @@ fi
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+alias ls="ls --color=always"
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -81,4 +84,4 @@ CDPATH=.:$GOPATH/src/stash/
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
-
+alias sd="cd ~/git/savannah-deployments/v2"
