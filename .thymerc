@@ -1,0 +1,2 @@
+set :timer, 10*60
+set :tmux, true
