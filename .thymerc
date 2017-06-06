@@ -1,2 +1,3 @@
-set :timer, 10*60
+set :timer, 2
 set :tmux, true
+set :tmux_theme, "#[fg=mycolor,bg=mycolor]#[fg=%s]%s#[fg=mycolor,bg=mycolor]"
