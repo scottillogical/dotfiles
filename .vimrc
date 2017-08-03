@@ -13,15 +13,17 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'Shougo/neocomplete'
+"Plug 'Shougo/neocomplete'
 if (has('mac'))
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-go', { 'do': 'make'}
   Plug 'fatih/vim-go'
   Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 endif
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
@@ -59,8 +61,11 @@ set undodir=~/.vim/tmp
 
 " Status bar customization
 set laststatus=2
-set statusline=%f "tail of the filenamj
-set statusline+=%l
+"set statusline=%f "tail of the filenamj
+"set statusline+=%l
+"set statusline+=%#goStatuslineColor#
+"set statusline+=%{go#statusline#Show()}
+"set statusline+=%*
 
 " Text Formatting
 syntax on
@@ -212,29 +217,49 @@ let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_types = 0
+let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1 "type info (|:GoInfo|) for the word under the cursor automatically.
 let g:go_fmt_command = "goimports"
 " enable synstatic go
-let g:syntastic_go_checkers = ['go',  'govet', 'errcheck'] " enable synstatic go
-let g:go_list_type = "quickfix" " for syntastic
+"let g:syntastic_go_checkers = ['go',  'govet', 'errcheck'] " enable synstatic go
+"let g:syntastic_go_checkers = ['go',  'govet', 'errcheck'] " enable synstatic go
+" https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt#L1615
+"let g:syntastic_go_checkers = [ 'govet', 'errcheck']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']}
+"let g:go_list_type = "quickfix" " for syntastic
 " the ack.vim loses quickfix on write
-""let g:go_metalinter_autosave = 1#
-""let g:go_metalinter_enabled = ['']
-"let g:go_metalinter_autosave_enabled = ['']
+"let g:go_metalinter_autosave_enabled = ['vet','gosimple', 'gas', 'goconst']
+"let g:go_metalinter_enabled = ['vet', 'gosimple', 'gas', 'goconst']
+let g:go_metalinter_enabled = ['go']
+"let g:go_metalinter_autosave = 1
+let g:syntastic_go_checkers = ['go', 'govet', 'errcheck', 'gofmt']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
+let g:go_auto_sameids = 10
+let g:go_info_mode = 'guru'
 
-
+"autocmd BufWritePost *.go call go#cmd#Build(1)
 
 " =============== NerdTree Plguin =========
 let g:NERDTreeWinSize = 30
 
 
 
-autocmd FileType go call SetGoOptions()
 " ====== TAGBAR =======
-let g:tagbar_left=1
-function! SetGoOptions()
-  :call tagbar#autoopen(0)
-endfunction
+"let g:tagbar_left=1
+"autocmd FileType go call SetGoOptions()
+"function! SetGoOptions()
+  ":call tagbar#autoopen(0)
+"endfunction
 nnoremap <leader>v :TagbarToggle<CR>
 let g:tagbar_autoshowtag = 2
+let g:tagbar_width = 25
+
+let g:deoplete#enable_at_startup = 1
+set clipboard=unnamed
+
+let g:airline_theme='solarized'
+let g:airline_section_z = '%t'
+

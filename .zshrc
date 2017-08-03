@@ -7,6 +7,7 @@ antigen bundle git
 #antigen bundle zsh-users/zsh-autosuggestions
 #antigen bundle ssh-agent
 antigen bundle ruby
+antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle marzocchi/zsh-notify
@@ -52,3 +53,12 @@ function chpwd() {
 
 alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
 alias s="cd ~/go/src/stash.zipcar.com/scm/sav/savannah.git"
+
+ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+
+ set -g default-command "which reattach-to-user-namespace > /dev/null && reattach-to-user-namespace -l $SHELL || $SHELL -l"
+ alias nvim='reattach-to-user-namespace -l nvim'
+
+alias python=python3
+
+alias dl='docker ps -l -q'
