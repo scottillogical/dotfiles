@@ -1,4 +1,7 @@
 set nocompatible              " be iMproved, required
+set spelllang=en
+set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add
+set spell
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/YankRing.vim'
 Plug 'majutsushi/tagbar'
@@ -263,3 +266,4 @@ set clipboard=unnamed
 let g:airline_theme='solarized'
 let g:airline_section_z = '%t'
 
+set complete+=kspell
