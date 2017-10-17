@@ -1,4 +1,4 @@
-set :timer, 20
+set :timer, 600
 set :warning, 10
 set :interval, 1
 set :tmux, true
