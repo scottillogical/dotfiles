@@ -16,6 +16,7 @@
 --ignore-dir=tmp
 --ignore-dir=deps
 --ignore-dir=doc
+--ignore-dir=docs
 --ignore-dir=coverage
 --ignore-dir=spec/fixtures
 --ignore-dir=public
@@ -25,4 +26,3 @@
 --ignore-dir=node_modules
 --ignore-dir=vendor
 --ignore-dir=rel
-

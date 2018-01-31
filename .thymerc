@@ -1,0 +1,11 @@
+set :timer, 600
+set :warning, 10
+set :interval, 1
+set :tmux, true
+set :warning_color, 'red,bold'
+set :tmux_theme, "#[fg=mycolor,bg=mycolor]#[fg=%s]%s#[fg=mycolor,bg=mycolor]"
+
+
+after do |seconds_left|
+  `echo "times up!" ` if seconds_left == 0
+end
