@@ -50,12 +50,33 @@ function chpwd() {
   ls -a
 }
 
-alias s="cd ~/go/src/stash.zipcar.com/scm/sav/savannah.git"
+
+[[ -s "/Users/scottschulthess/.gvm/scripts/gvm" ]] && source "/Users/scottschulthess/.gvm/scripts/gvm"
+alias s="cd $GOPATH/src/stash.zipcar.com/scm/sav/savannah.git"
 
  export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
- alias nvim='reattach-to-user-namespace -l nvim'
 
 alias python=python3
 
 alias dl='docker ps -l -q'
+
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+if command_exists rbenv ; then
+  eval "$(rbenv init -)"
+fi
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/scottschulthess/.sdkman"
+[[ -s "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh"
+export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"
+
+export BLITE_DIRECTOR_CIDR=192.168.9.0/24
+export BLITE_GATEWAY_IP=192.168.9.1
+export BLITE_DIRECTOR_IP=192.168.9.2
+export BLITE_BOSH_DEPLOYMENTS_CIDR=192.168.8.0/24
+eval $(blite env-eval)
