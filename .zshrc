@@ -4,7 +4,7 @@ antigen use oh-my-zsh
 antigen theme robbyrussell
 antigen bundle git
 #antigen bundle zsh-users/zsh-completions
-#antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-autosuggestions
 #antigen bundle ssh-agent
 antigen bundle ruby
 antigen bundle git
