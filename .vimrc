@@ -216,12 +216,13 @@ let g:ctrlp_cmd = 'CtrlD'
 
 " ========== VIM-GO PLUGIN ==========
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
-let g:go_highlight_types = 0
-let g:go_highlight_operators = 0
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1 "type info (|:GoInfo|) for the word under the cursor automatically.
 let g:go_fmt_command = "goimports"
@@ -236,8 +237,7 @@ let g:go_fmt_command = "goimports"
 "let g:go_metalinter_enabled = ['vet', 'gosimple', 'gas', 'goconst']
 "let g:go_metalinter_enabled = ['go']
 "let g:go_metalinter_autosave = 1
-let g:syntastic_go_checkers = ['go', 'govet', 'errcheck', 'gofmt']
-let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
+let g:syntastic_go_checkers = ['govet', 'errcheck', 'go', 'govet', 'gofmt']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
 let g:go_auto_sameids = 10
@@ -264,3 +264,5 @@ set complete+=kspell
 let g:yankring_clipboard_monitor=0
 
 let g:NERDDefaultAlign = 'left'
+autocmd BufNewFile,BufRead spec set filetype=yaml
+
