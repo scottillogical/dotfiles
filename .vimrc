@@ -216,17 +216,17 @@ let g:ctrlp_cmd = 'CtrlD'
 
 " ========== VIM-GO PLUGIN ==========
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
-let g:go_highlight_types = 0
-let g:go_highlight_operators = 0
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1 "type info (|:GoInfo|) for the word under the cursor automatically.
 let g:go_fmt_command = "goimports"
 " enable synstatic go
-"let g:syntastic_go_checkers = ['go',  'govet', 'errcheck'] " enable synstatic go
 "let g:syntastic_go_checkers = ['go',  'govet', 'errcheck'] " enable synstatic go
 " https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt#L1615
 "let g:syntastic_go_checkers = [ 'govet', 'errcheck']
@@ -235,10 +235,10 @@ let g:go_fmt_command = "goimports"
 " the ack.vim loses quickfix on write
 "let g:go_metalinter_autosave_enabled = ['vet','gosimple', 'gas', 'goconst']
 "let g:go_metalinter_enabled = ['vet', 'gosimple', 'gas', 'goconst']
-let g:go_metalinter_enabled = ['go']
+"let g:go_metalinter_enabled = ['go']
 "let g:go_metalinter_autosave = 1
-let g:syntastic_go_checkers = ['go', 'govet', 'errcheck', 'gofmt']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_go_checkers = ['govet', 'errcheck', 'go', 'govet', 'gofmt']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
 let g:go_auto_sameids = 10
 let g:go_info_mode = 'guru'
@@ -250,12 +250,6 @@ let g:NERDTreeWinSize = 30
 
 
 
-" ====== TAGBAR =======
-"let g:tagbar_left=1
-"autocmd FileType go call SetGoOptions()
-"function! SetGoOptions()
-  ":call tagbar#autoopen(0)
-"endfunction
 nnoremap <leader>v :TagbarToggle<CR>
 let g:tagbar_autoshowtag = 2
 let g:tagbar_width = 25
@@ -267,6 +261,9 @@ let g:airline_theme='solarized'
 let g:airline_section_z = '%t'
 
 set complete+=kspell
+let g:yankring_clipboard_monitor=0
 
 let g:NERDDefaultAlign = 'left'
 set iskeyword-=. " Make sure the word seperator includes period
+autocmd BufNewFile,BufRead spec set filetype=yaml
+
