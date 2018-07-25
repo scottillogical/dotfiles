@@ -268,5 +268,5 @@ let g:airline_section_z = '%t'
 
 set complete+=kspell
 
-# Comment on the same column
 let g:NERDDefaultAlign = 'left'
+set iskeyword-=. " Make sure the word seperator includes period
