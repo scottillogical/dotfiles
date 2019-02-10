@@ -239,10 +239,17 @@ let g:go_fmt_command = "goimports"
 "let g:go_metalinter_autosave = 1
 let g:syntastic_go_checkers = ['govet', 'errcheck', 'go', 'govet', 'gofmt']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_fmt_options = {
+  \ 'gofmt': '-s',
+  \ }
 let g:go_list_type = "quickfix"
 let g:go_auto_sameids = 10
 let g:go_info_mode = 'guru'
 
+" deoplete (golang autocomplete) settings
+let g:python3_host_prog = '/usr/bin/python3' " recommended to improve boot times
+let g:deoplete#enable_at_startup = 0 " don't use deoplete at startup because it's so slow
+let g:deoplete#auto_complete_delay=50 " delay autocomplete  for performance
 "autocmd BufWritePost *.go call go#cmd#Build(1)
 
 " =============== NerdTree Plguin =========
@@ -254,7 +261,6 @@ nnoremap <leader>v :TagbarToggle<CR>
 let g:tagbar_autoshowtag = 2
 let g:tagbar_width = 25
 
-let g:deoplete#enable_at_startup = 1
 set clipboard=unnamed
 
 let g:airline_theme='solarized'
@@ -265,4 +271,11 @@ let g:yankring_clipboard_monitor=0
 
 let g:NERDDefaultAlign = 'left'
 autocmd BufNewFile,BufRead spec set filetype=yaml
+
+
+set re=1
+set ttyfast
+set lazyredraw
+
+let g:go_gocode_propose_source=0
 
