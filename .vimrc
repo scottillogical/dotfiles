@@ -270,6 +270,7 @@ set complete+=kspell
 let g:yankring_clipboard_monitor=0
 
 let g:NERDDefaultAlign = 'left'
+set iskeyword-=. " Make sure the word seperator includes period
 autocmd BufNewFile,BufRead spec set filetype=yaml
 
 
