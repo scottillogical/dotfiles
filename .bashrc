@@ -82,6 +82,10 @@ shopt -s histappend
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 CDPATH=.:$GOPATH/src/stash/
 
+# set my timezone
+export TZ=US/Eastern
+
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 alias sd="cd ~/git/savannah-deployments/v2"
