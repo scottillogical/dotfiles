@@ -3,12 +3,14 @@ set spelllang=en
 set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add
 set spell
 call plug#begin('~/.vim/plugged')
+Plug 'hashivim/vim-terraform'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug 'elzr/vim-json'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'kien/ctrlp.vim'
+Plug 'kchmck/vim-coffee-script'
 Plug 'scrooloose/syntastic'
 Plug 'fatih/vim-go'
 Plug 'scrooloose/nerdtree'
@@ -226,6 +228,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1 "type info (|:GoInfo|) for the word under the cursor automatically.
 let g:go_fmt_command = "goimports"
+let go_def_mode='godef' " supports modules, guru does not
 " enable synstatic go
 "let g:syntastic_go_checkers = ['go',  'govet', 'errcheck'] " enable synstatic go
 " https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt#L1615
@@ -237,14 +240,15 @@ let g:go_fmt_command = "goimports"
 "let g:go_metalinter_enabled = ['vet', 'gosimple', 'gas', 'goconst']
 "let g:go_metalinter_enabled = ['go']
 "let g:go_metalinter_autosave = 1
-let g:syntastic_go_checkers = ['govet', 'errcheck', 'go', 'govet', 'gofmt']
+"#let g:syntastic_go_checkers = ['govet', 'errcheck', 'go', 'govet', 'gofmt']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-let g:go_fmt_options = {
-  \ 'gofmt': '-s',
-  \ }
-let g:go_list_type = "quickfix"
-let g:go_auto_sameids = 10
-let g:go_info_mode = 'guru'
+"let g:go_fmt_options = {
+  "\ 'gofmt': '-s',
+  "\ }
+"let g:go_list_type = "quickfix"
+"let g:go_auto_sameids = 10
+"let g:go_info_mode = 'guru'
+let g:go_info_mode = 'gocode'
 
 " deoplete (golang autocomplete) settings
 let g:python3_host_prog = '/usr/bin/python3' " recommended to improve boot times
@@ -280,3 +284,5 @@ set lazyredraw
 
 let g:go_gocode_propose_source=0
 
+set cursorcolumn "Highlight cursor column
+"let g:syntastic_yaml_checkers = ['yamllint']

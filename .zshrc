@@ -38,16 +38,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export GOROOT=/usr/local/go
-export GOROOT=/usr/local/Cellar/go/
-export GOROOT=/usr/local/Cellar/go/1.8/libexec
-
-# http://stackoverflow.com/questions/3964068/zsh-automatically-run-ls-after-every-cd
-function chpwd() {
-  emulate -L zsh
-  ls -a
-}
-
 
 [[ -s "/Users/scottschulthess/.gvm/scripts/gvm" ]] && source "/Users/scottschulthess/.gvm/scripts/gvm"
 
@@ -75,4 +65,17 @@ export BLITE_DIRECTOR_IP=192.168.9.2
 export BLITE_BOSH_DEPLOYMENTS_CIDR=192.168.8.0/24
 
 export GO111MODULE=on
-alias s=\$GOPATH/src/stash.zipcar.com/scm/sav/savannah.git
+alias s=~/git/savannah
+alias s=~/git/savannah-deployments/v2
+
+
+
+alias cd='cd -P' # https://unix.stackexchange.com/questions/55713/make-cd-follow-symbolic-links
+
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
