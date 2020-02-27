@@ -65,9 +65,6 @@ export BLITE_DIRECTOR_IP=192.168.9.2
 export BLITE_BOSH_DEPLOYMENTS_CIDR=192.168.8.0/24
 
 export GO111MODULE=on
-alias s=~/git/savannah
-alias s=~/git/savannah-deployments/v2
-
 
 
 alias cd='cd -P' # https://unix.stackexchange.com/questions/55713/make-cd-follow-symbolic-links
@@ -79,3 +76,21 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
+
+# Kube completion
+source <(kubectl completion zsh)
+
+## Colorize the ls output ##
+alias ls='ls --color=auto'
+
+## Use a long listing format ##
+alias ll='ls -la'
+
+## Show hidden files ##
+alias l.='ls -d .* --color=auto'
+antigen bundle superbrothers/zsh-kubectl-prompt
+antigen apply
+
+# https://github.com/superbrothers/zsh-kubectl-prompt
+autoload -U colors; colors
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
