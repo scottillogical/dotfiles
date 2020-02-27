@@ -6,9 +6,12 @@ ln -s ~/dotfiles/.vim ~/.vim
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/dotfiles/.gitignore ~/.gitignore
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.thymerc ~/.thymerc
 ln -s ~/dotfiles/cheapwatch ~/bin/cheapwatch
 mkdir ~/.vim/backup
 mkdir ~/.vim/tmp
+
+# Add global gitignore and configure git to use it
+ln -s ~/dotfiles/.gitignore ~/.gitignore
+git config --global core.excludesfile ~/.gitignore_global
