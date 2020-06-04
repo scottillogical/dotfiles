@@ -19,7 +19,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug '907th/vim-auto-save'
 Plug 'tpope/vim-fugitive'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 "Plug 'Shougo/neocomplete'
 if (has('mac'))
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -44,8 +47,9 @@ set backspace=indent,eol,start " make backspace work like most apps aka backspac
 set wildmode=longest,list,full " better expansion
 set wildmenu
 set incsearch "incremental search on / searches
+set cursorcolumn "Highlight cursor column
 
-" context swpcific suuper tab completion, good for gocode
+" context specific super tab completion, good for gocode
 let g:SuperTabDefaultCompletionType = "context"
 
 set nohlsearch  " disable search highlighting
@@ -62,7 +66,6 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 set dir=~/.vim/tmp
 set undodir=~/.vim/tmp
-
 
 " Status bar customization
 set laststatus=2
@@ -88,7 +91,7 @@ set cc=+1                  " highlight 80 characters long
 set virtualedit=block      " allow virtual edit in visual block ..
 set listchars=trail:.      " highlight trailing whitespace
 autocmd FileType c,cpp,java,php,ruby,elixir autocmd BufWritePre <buffer> :%s/\s\+$//e
-
+autocmd BufNewFile,BufRead spec set filetype=yaml
 
 " Custom file type settings
 autocmd FileType javascript setlocal textwidth=80
@@ -136,6 +139,7 @@ set wildignore+=/tmp/**
 set wildignore+=/log/**
 set wildignore+=app/nls/**
 set wildignore+=node_modules/**
+set wildignore+=webapp/node_modules/**
 set wildignore+=vendor/bower/**
 set wildignore+=doc/**
 set wildignore+=docs/**
@@ -158,6 +162,8 @@ set wildignore+=/tmp/**
 set wildignore+=/log/**
 set wildignore+=app/nls/**
 set wildignore+=node_modules/**
+set wildignore+=node_modules
+set wildignore+=vendor
 set wildignore+=vendor/bower/**
 set wildignore+=doc/**
 set wildignore+=catalog/**
@@ -192,8 +198,16 @@ let g:airline_section_b   =''
 
 
 
-let g:vim_json_syntax_conceal = 0
+" Syntastic ruby
+" /Users/scottschulthess/.rbenv/shims/ruby
+let g:syntastic_ruby_checkers = ['mri']
+
+
+" Syntastic json
+
 let g:syntastic_json_checkers = ['jsonlint']
+
+let g:vim_json_syntax_conceal = 0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -214,8 +228,6 @@ let g:syntastic_cucumber_checkers=['']
 let g:ctrlp_map = '<c-d>'
 let g:ctrlp_cmd = 'CtrlD'
 
-
-
 " ========== VIM-GO PLUGIN ==========
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
@@ -228,19 +240,17 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1 "type info (|:GoInfo|) for the word under the cursor automatically.
 let g:go_fmt_command = "goimports"
+let g:go_gocode_propose_source=0
 let go_def_mode='godef' " supports modules, guru does not
 " enable synstatic go
-"let g:syntastic_go_checkers = ['go',  'govet', 'errcheck'] " enable synstatic go
+"#let g:syntastic_go_checkers = ['govet', 'errcheck', 'go', 'govet', 'gofmt']
 " https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt#L1615
-"let g:syntastic_go_checkers = [ 'govet', 'errcheck']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']}
 "let g:go_list_type = "quickfix" " for syntastic
 " the ack.vim loses quickfix on write
 "let g:go_metalinter_autosave_enabled = ['vet','gosimple', 'gas', 'goconst']
-"let g:go_metalinter_enabled = ['vet', 'gosimple', 'gas', 'goconst']
-"let g:go_metalinter_enabled = ['go']
+"let g:go_metalinter_enabled = ['go', 'vet', 'gosimple', 'gas', 'goconst']
 "let g:go_metalinter_autosave = 1
-"#let g:syntastic_go_checkers = ['govet', 'errcheck', 'go', 'govet', 'gofmt']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 "let g:go_fmt_options = {
   "\ 'gofmt': '-s',
@@ -248,7 +258,6 @@ let go_def_mode='godef' " supports modules, guru does not
 "let g:go_list_type = "quickfix"
 "let g:go_auto_sameids = 10
 "let g:go_info_mode = 'guru'
-let g:go_info_mode = 'gocode'
 
 " deoplete (golang autocomplete) settings
 let g:python3_host_prog = '/usr/bin/python3' " recommended to improve boot times
@@ -258,31 +267,34 @@ let g:deoplete#auto_complete_delay=50 " delay autocomplete  for performance
 
 " =============== NerdTree Plguin =========
 let g:NERDTreeWinSize = 30
-
-
+let g:NERDDefaultAlign = 'left'
 
 nnoremap <leader>v :TagbarToggle<CR>
 let g:tagbar_autoshowtag = 2
 let g:tagbar_width = 25
 
-set clipboard=unnamed
 
 let g:airline_theme='solarized'
 let g:airline_section_z = '%t'
 
+" Yankring
+set clipboard=unnamed
 set complete+=kspell
 let g:yankring_clipboard_monitor=0
 
-let g:NERDDefaultAlign = 'left'
 set iskeyword-=. " Make sure the word seperator includes period
-autocmd BufNewFile,BufRead spec set filetype=yaml
-
 
 set re=1
 set ttyfast
 set lazyredraw
 
-let g:go_gocode_propose_source=0
 
-set cursorcolumn "Highlight cursor column
-"let g:syntastic_yaml_checkers = ['yamllint']
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
+
+" javascript syntastic
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'yarn run eslint --'
+
+
+" ignore node modules

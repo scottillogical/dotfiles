@@ -3,6 +3,7 @@ source ~/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen theme robbyrussell
 antigen bundle git
+antigen bundle kube-ps1
 #antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 #antigen bundle ssh-agent
@@ -11,6 +12,7 @@ antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle robbyrussell/oh-my-zsh plugins/z
+antigen bundle
 antigen apply
 
 # theme
@@ -18,8 +20,6 @@ DEFAULT_USER=sschulthess
 
 # self explanitory
 DISABLE_AUTO_TITLE=true
-
-#:source ~/.private_settings
 
 # set editor to vim
 export VISUAL=vim
@@ -59,13 +59,7 @@ export SDKMAN_DIR="/Users/scottschulthess/.sdkman"
 [[ -s "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh"
 export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"
 
-export BLITE_DIRECTOR_CIDR=192.168.9.0/24
-export BLITE_GATEWAY_IP=192.168.9.1
-export BLITE_DIRECTOR_IP=192.168.9.2
-export BLITE_BOSH_DEPLOYMENTS_CIDR=192.168.8.0/24
-
 export GO111MODULE=on
-
 
 alias cd='cd -P' # https://unix.stackexchange.com/questions/55713/make-cd-follow-symbolic-links
 
@@ -77,20 +71,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 
+autoload -U colors; colors
+
 # Kube completion
 source <(kubectl completion zsh)
 
-## Colorize the ls output ##
+# Colorize the ls output ##
 alias ls='ls --color=auto'
-
-## Use a long listing format ##
-alias ll='ls -la'
-
-## Show hidden files ##
-alias l.='ls -d .* --color=auto'
-antigen bundle superbrothers/zsh-kubectl-prompt
-antigen apply
-
-# https://github.com/superbrothers/zsh-kubectl-prompt
-autoload -U colors; colors
-RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+# Increase zsh history
+HISTSIZE=10000000
+SAVEHIST=10000000

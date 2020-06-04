@@ -24,7 +24,6 @@ screenshot.png
 .netrwhist
 
 # vim ignores
-*.s[a-w][a-z]
 *.un~
 Session.vim
 *~
@@ -37,7 +36,7 @@ Session.vim
 .vim/.netrwhist
 
 
-# Terraform
+#
 *.tfstate
 *.tfstate.backup
 *.tfstate.lock.info
