@@ -1,4 +1,5 @@
-
+mv ~/.bashrc ~/.bashrc.bak
+mkdir -p ~/bin
 
 ln -s ~/dotfiles/.ackrc ~/.ackrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
@@ -15,3 +16,5 @@ mkdir ~/.vim/tmp
 # Add global gitignore and configure git to use it
 ln -s ~/dotfiles/.gitignore ~/.gitignore
 git config --global core.excludesfile ~/.gitignore_global
+
+vim +PluginInstall +qall
