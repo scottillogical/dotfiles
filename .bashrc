@@ -89,3 +89,7 @@ export TZ=US/Eastern
 export VISUAL=vim
 export EDITOR="$VISUAL"
 alias sd="cd ~/git/savannah-deployments/v2"
+
+
+# Disable AWS pager https://stackoverflow.com/questions/60122188/how-to-turn-off-the-pager-for-aws-cli-return-value
+export AWS_PAGER=""

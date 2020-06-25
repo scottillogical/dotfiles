@@ -19,7 +19,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug '907th/vim-auto-save'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -241,23 +240,11 @@ let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1 "type info (|:GoInfo|) for the word under the cursor automatically.
 let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
-let go_def_mode='godef' " supports modules, guru does not
 " enable synstatic go
-"#let g:syntastic_go_checkers = ['govet', 'errcheck', 'go', 'govet', 'gofmt']
-" https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt#L1615
-"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']}
-"let g:go_list_type = "quickfix" " for syntastic
-" the ack.vim loses quickfix on write
-"let g:go_metalinter_autosave_enabled = ['vet','gosimple', 'gas', 'goconst']
-"let g:go_metalinter_enabled = ['go', 'vet', 'gosimple', 'gas', 'goconst']
-"let g:go_metalinter_autosave = 1
-"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-"let g:go_fmt_options = {
-  "\ 'gofmt': '-s',
-  "\ }
-"let g:go_list_type = "quickfix"
-"let g:go_auto_sameids = 10
-"let g:go_info_mode = 'guru'
+let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint']
+let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
 
 " deoplete (golang autocomplete) settings
 let g:python3_host_prog = '/usr/bin/python3' " recommended to improve boot times

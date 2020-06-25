@@ -22,7 +22,7 @@ DEFAULT_USER=sschulthess
 DISABLE_AUTO_TITLE=true
 
 # set editor to vim
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=$VISUAL
 
 # type in a project name to name toit
@@ -81,3 +81,6 @@ alias ls='ls --color=auto'
 # Increase zsh history
 HISTSIZE=10000000
 SAVEHIST=10000000
+
+# Disable AWS pager https://stackoverflow.com/questions/60122188/how-to-turn-off-the-pager-for-aws-cli-return-value
+export AWS_PAGER=""
