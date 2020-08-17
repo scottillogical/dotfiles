@@ -29,7 +29,7 @@ export EDITOR=$VISUAL
 
 # add sbin to path
 export PATH="/usr/local/sbin:$PATH"
-export PATH=$PATH:~/bin
+export PATH=~/bin:$PATH
 export GO_ROOT=/usr/local
 export GEM_SOURCE=http://yarp.dev
 
@@ -64,6 +64,7 @@ export GO111MODULE=on
 alias cd='cd -P' # https://unix.stackexchange.com/questions/55713/make-cd-follow-symbolic-links
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/Users/scottschulthess/Library/Python/3.7/bin:$PATH"
 
 
 export NVM_DIR="$HOME/.nvm"
@@ -84,3 +85,11 @@ SAVEHIST=10000000
 
 # Disable AWS pager https://stackoverflow.com/questions/60122188/how-to-turn-off-the-pager-for-aws-cli-return-value
 export AWS_PAGER=""
+alias k=kubectl
+
+export GONOSUMDB=stash.zipcar.com/*
+export GOPRIVATE=stash.zipcar.com/*
+
+
+# https://blog.mact.me/2012/09/06/using-watch-with-a-bash-alias
+alias watch='watch '
