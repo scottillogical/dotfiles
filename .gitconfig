@@ -11,3 +11,5 @@ protocol = https
 	compactionHeuristic = 1
 [color]
 	ui = true
+[pull]
+	rebase = false

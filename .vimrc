@@ -1,7 +1,8 @@
 set nocompatible              " be iMproved, required
-set spelllang=en
-set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add
-set spell
+" disabled because it highlights too miuch
+"set spelllang=en
+"set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add
+"set spell
 call plug#begin('~/.vim/plugged')
 Plug 'hashivim/vim-terraform'
 Plug 'vim-scripts/YankRing.vim'
@@ -22,18 +23,23 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-"Plug 'Shougo/neocomplete'
-if (has('mac'))
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'zchee/deoplete-go', { 'do': 'make'}
-  Plug 'fatih/vim-go'
-  Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-endif
+"if has('nvim')
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+  "Plug 'Shougo/deoplete.nvim'
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'altercation/vim-colors-solarized'
 
+
 call plug#end()
+let g:deoplete#enable_at_startup = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 filetype off                  " required
 " Vim misc defaults
 set noswapfile     	   " they are annoying
@@ -284,3 +290,5 @@ let g:syntastic_javascript_eslint_exe = 'yarn run eslint --'
 
 
 " ignore node modules
+"
+let g:go_gopls_enabled = 1

@@ -64,7 +64,7 @@ export GO111MODULE=on
 alias cd='cd -P' # https://unix.stackexchange.com/questions/55713/make-cd-follow-symbolic-links
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/Users/scottschulthess/Library/Python/3.7/bin:$PATH"
+export PATH="/Users/scottschulthess/Library/Python/3.8/bin:$PATH"
 
 
 export NVM_DIR="$HOME/.nvm"
