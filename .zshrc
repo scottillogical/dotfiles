@@ -93,3 +93,13 @@ export GOPRIVATE=stash.zipcar.com/*
 
 # https://blog.mact.me/2012/09/06/using-watch-with-a-bash-alias
 alias watch='watch '
+
+export PYTHONPATH="/usr/local/lib/python3.9/site-packages"
+
+
+# https://github.com/jonmosco/kube-ps1
+export KUBE_PS1_NS_ENABLE=false
+export KUBE_PS1_SEPARATOR=''
+export KUBE_PS1_SYMBOL_DEFAULT=''
+export KUBE_PS1_SYMBOL_ENABLE=false
+PROMPT='$(kube_ps1)'$PROMPT

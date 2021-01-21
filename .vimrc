@@ -52,7 +52,7 @@ set backspace=indent,eol,start " make backspace work like most apps aka backspac
 set wildmode=longest,list,full " better expansion
 set wildmenu
 set incsearch "incremental search on / searches
-set cursorcolumn "Highlight cursor column
+"set cursorcolumn "Highlight cursor column
 
 " context specific super tab completion, good for gocode
 let g:SuperTabDefaultCompletionType = "context"
