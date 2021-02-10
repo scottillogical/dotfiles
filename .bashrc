@@ -66,7 +66,6 @@ parse_git_branch() {
 }
 export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]  \n$ "
 
-export HISTCONTROL=ignoredups:erasedups
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 
@@ -75,8 +74,6 @@ shopt -s histappend
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 export HISTCONTROL=ignoredups:erasedups
-# When the shell exits, append to the history file instead of overwriting it
-shopt -s histappend
 
 # After each command, append to the history file and reread it
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
@@ -85,10 +82,8 @@ CDPATH=.:$GOPATH/src/stash/
 # set my timezone
 export TZ=US/Eastern
 
-
 export VISUAL=vim
 export EDITOR="$VISUAL"
-alias sd="cd ~/git/savannah-deployments/v2"
 
 
 # Disable AWS pager https://stackoverflow.com/questions/60122188/how-to-turn-off-the-pager-for-aws-cli-return-value
