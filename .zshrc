@@ -4,28 +4,31 @@ antigen use oh-my-zsh
 antigen theme robbyrussell
 antigen bundle git
 antigen bundle kube-ps1
-#antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
-#antigen bundle ssh-agent
 antigen bundle ruby
-antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle robbyrussell/oh-my-zsh plugins/z
 antigen bundle
 antigen apply
 
-# theme
-DEFAULT_USER=sschulthess
 
-# self explanitory
+# Add k8s target to prompt
+# https://github.com/jonmosco/kube-ps1
+export KUBE_PS1_NS_ENABLE=false
+export KUBE_PS1_SEPARATOR=''
+export KUBE_PS1_SYMBOL_DEFAULT=''
+export KUBE_PS1_SYMBOL_ENABLE=false
+
+# Override entire prompt expressly to override the directories shown to 3 instead of the default 1
+# Also prepend k8s context
+PROMPT='$(kube_ps1)%(?:%{%}➜ :%{%}➜ ) %{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
+
 DISABLE_AUTO_TITLE=true
 
 # set editor to vim
 export VISUAL=nvim
 export EDITOR=$VISUAL
-
-# type in a project name to name toit
 
 # add sbin to path
 export PATH="/usr/local/sbin:$PATH"
@@ -39,12 +42,13 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+
+# GVM (go version manager) config
 [[ -s "/Users/scottschulthess/.gvm/scripts/gvm" ]] && source "/Users/scottschulthess/.gvm/scripts/gvm"
 
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-alias python=python3
-alias dl='docker ps -l -q'
 
+alias python=python3
 
 command_exists () {
   type "$1" &> /dev/null ;
@@ -80,8 +84,8 @@ source <(kubectl completion zsh)
 # Colorize the ls output ##
 alias ls='ls --color=auto'
 # Increase zsh history
-HISTSIZE=10000000
-SAVEHIST=10000000
+HISTSIZE=30000000
+SAVEHIST=30000000
 
 # Disable AWS pager https://stackoverflow.com/questions/60122188/how-to-turn-off-the-pager-for-aws-cli-return-value
 export AWS_PAGER=""
@@ -90,16 +94,10 @@ alias k=kubectl
 export GONOSUMDB=stash.zipcar.com/*
 export GOPRIVATE=stash.zipcar.com/*
 
-
 # https://blog.mact.me/2012/09/06/using-watch-with-a-bash-alias
 alias watch='watch '
 
 export PYTHONPATH="/usr/local/lib/python3.9/site-packages"
 
-
-# https://github.com/jonmosco/kube-ps1
-export KUBE_PS1_NS_ENABLE=false
-export KUBE_PS1_SEPARATOR=''
-export KUBE_PS1_SYMBOL_DEFAULT=''
-export KUBE_PS1_SYMBOL_ENABLE=false
-PROMPT='$(kube_ps1)'$PROMPT
+# Alias for typora https://support.typora.io/Use-Typora-From-Shell-or-cmd/
+alias typora="open -a typora"
