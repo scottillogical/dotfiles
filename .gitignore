@@ -6,6 +6,7 @@
 /.bundle
 
 # Ignore the default SQLite database.
+.idea
 
 # Ignore all logfiles and tempfiles.
 /log/*.log

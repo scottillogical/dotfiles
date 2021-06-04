@@ -1,8 +1,5 @@
-set nocompatible              " be iMproved, required
+set  nocompatible              " be iMproved, required
 " disabled because it highlights too miuch
-"set spelllang=en
-"set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add
-"set spell
 call plug#begin('~/.vim/plugged')
 Plug 'hashivim/vim-terraform'
 Plug 'vim-scripts/YankRing.vim'
@@ -248,7 +245,7 @@ let g:go_gocode_propose_source=0
 " enable synstatic go
 let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint']
 let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go' ,'java'] }
 let g:go_list_type = "quickfix"
 
 " deoplete (golang autocomplete) settings
@@ -292,3 +289,15 @@ let g:syntastic_javascript_eslint_exe = 'yarn run eslint --'
 " ignore node modules
 "
 let g:go_gopls_enabled = 1
+colorscheme zellner
+
+
+" Spelling
+" Disable spelling by default, enable per-filetype  https://dancroak.com/spell-check-in-vim
+autocmd BufRead setlocal nospell
+
+"set spell
+set spelllang=en
+set spellfile=~/.vim/spell/en.utf-8.add
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
