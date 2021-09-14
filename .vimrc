@@ -156,6 +156,7 @@ set wildignore+=vendor/cache/**
 set wildignore+=vendor/bundle/**
 set wildignore+=vendor/ruby/**
 set wildignore+=test/coverage/**
+set wildignore+=*.txt
 set wildignore+=bundle
 set wildignore+=steak/**
 set wildignore+=bundle/**
@@ -199,6 +200,8 @@ set t_Co=16
 let g:airline_section_b   =''
 
 
+" enable syntastic for bash
+let g:syntastic_sh_checkers = ['shellcheck', 'sh']
 
 " Syntastic ruby
 " /Users/scottschulthess/.rbenv/shims/ruby
@@ -206,7 +209,6 @@ let g:syntastic_ruby_checkers = ['mri']
 
 
 " Syntastic json
-
 let g:syntastic_json_checkers = ['jsonlint']
 
 let g:vim_json_syntax_conceal = 0
@@ -222,7 +224,13 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_enable_go_checker = 1
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 autocmd BufWritePre * :%s/\s\+$//e
-set viminfo='100,\"2500,:200,%,n~/.viminfo
+"if !has('nvim')
+"  set viminfo+=n~/vim/viminfo
+"else
+"  " Do nothing here to use the neovim default
+"  " or do soemething like:
+"    set viminfo='100,\"2500,:200,%,n~/.viminfo
+"endif
 
 let g:vim_markdown_folding_disabled = 1 "disable vim-markdown folding
 
@@ -296,7 +304,7 @@ colorscheme zellner
 " Disable spelling by default, enable per-filetype  https://dancroak.com/spell-check-in-vim
 autocmd BufRead setlocal nospell
 
-"set spell
+set spell
 set spelllang=en
 set spellfile=~/.vim/spell/en.utf-8.add
 autocmd FileType markdown setlocal spell

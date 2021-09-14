@@ -1,3 +1,5 @@
+
+source ~/.privaterc
 # ANTIGEN CONFIG BELOW
 source ~/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
@@ -92,12 +94,12 @@ alias watch='watch '
 # Alias for typora https://support.typora.io/Use-Typora-From-Shell-or-cmd/
 alias typora="open -a typora"
 
-source ~/.privaterc
 
 # Use colorized diffs with kubctl
-export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
+#export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/scottschulthess/.sdkman"
+
 [[ -s "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh"
 export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"

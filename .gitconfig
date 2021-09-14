@@ -6,7 +6,7 @@
 protocol = https
 
 [core]
-	excludesfile = /Users/scottschulthess/.gitignore
+	excludesfile = /Users/scottschulthess/.gitignore_global
 [diff]
 	compactionHeuristic = 1
 [color]
