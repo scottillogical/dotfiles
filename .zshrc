@@ -1,5 +1,5 @@
+source ~/dotfiles/.privaterc
 
-source ~/.privaterc
 # ANTIGEN CONFIG BELOW
 source ~/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
