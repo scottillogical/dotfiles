@@ -1,4 +1,3 @@
-source ~/dotfiles/.privaterc
 
 # ANTIGEN CONFIG BELOW
 source ~/dotfiles/antigen/antigen.zsh
@@ -103,3 +102,5 @@ export SDKMAN_DIR="/Users/scottschulthess/.sdkman"
 
 [[ -s "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh"
 export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"
+
+source ~/dotfiles/.privaterc
