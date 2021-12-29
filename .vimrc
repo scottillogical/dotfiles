@@ -10,7 +10,7 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'scrooloose/syntastic'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
@@ -20,13 +20,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-"if has('nvim')
-  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-  "Plug 'Shougo/deoplete.nvim'
-  "Plug 'roxma/nvim-yarp'
-  "Plug 'roxma/vim-hug-neovim-rpc'
-"endif
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'

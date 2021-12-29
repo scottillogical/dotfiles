@@ -104,3 +104,5 @@ export SDKMAN_DIR="/Users/scottschulthess/.sdkman"
 export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"
 
 source ~/dotfiles/.privaterc
+
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
