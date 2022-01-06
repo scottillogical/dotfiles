@@ -7,7 +7,6 @@ antigen bundle git
 antigen bundle kube-ps1
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle ruby
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle robbyrussell/oh-my-zsh plugins/z
 antigen bundle
@@ -41,7 +40,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 alias python=python3
-alias tp=telepresence
+alias tp="telepresence —context=zc-carsharing-dev"
 
 command_exists () {
   type "$1" &> /dev/null ;
@@ -73,6 +72,7 @@ autoload -U colors; colors
 
 # Kube completion
 source <(kubectl completion zsh)
+
 
 # Colorize the ls output ##
 alias ls='ls --color=auto'
@@ -106,3 +106,8 @@ export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"
 source ~/dotfiles/.privaterc
 
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+autoload -U compinit; compinit
+source <(savkube completion zsh)
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
