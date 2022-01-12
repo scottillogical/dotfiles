@@ -40,7 +40,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 alias python=python3
-alias tp="telepresence —context=zc-carsharing-dev"
 
 command_exists () {
   type "$1" &> /dev/null ;
