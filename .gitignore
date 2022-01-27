@@ -34,8 +34,6 @@ Session.vim
 
 
 # for submodules - ignore
-.vim/.netrwhist
-
 .vim/plugged
 .vim/.netrwhist
 
@@ -56,3 +54,7 @@ Session.vim
 
 # Backup files
 *.bak
+
+# We only need .vimrc
+.vim
+
