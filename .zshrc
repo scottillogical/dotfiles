@@ -1,6 +1,5 @@
-
 # ANTIGEN CONFIG BELOW
-source ~/dotfiles/antigen/antigen.zsh
+source ~/dotfiles/antigen.zsh
 antigen use oh-my-zsh
 antigen theme robbyrussell
 antigen bundle git
