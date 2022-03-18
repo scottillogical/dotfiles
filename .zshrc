@@ -51,6 +51,7 @@ fi
 alias cd='cd -P'
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/Users/scottschulthess/Library/Python/3.8/bin:$PATH"
 
 # Node version manager

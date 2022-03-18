@@ -72,11 +72,6 @@ set undodir=~/.vim/tmp
 
 " Status bar customization
 set laststatus=2
-"set statusline=%f "tail of the filenamj
-"set statusline+=%l
-"set statusline+=%#goStatuslineColor#
-"set statusline+=%{go#statusline#Show()}
-"set statusline+=%*
 
 " Text Formatting
 syntax on
@@ -252,12 +247,10 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
 
-" enable synstatic go
-let g:syntastic_go_checkers = ['staticcheck', 'govet']
-let g:syntastic_go_gometalinter_args = ['--enable=staticcheck']
-let g:go_metalinter_enabled = ['all']
-let g:go_metalinter_autosave = 1
-let g:go_list_type = "quickfix"
+
+" enable synstatic checkers for golang
+let g:syntastic_go_checkers=['go', 'gofmt', 'govet', 'golangci_lint' ]
+let g:syntastic_mode_map={ 'mode': 'active' }
 
 " deoplete (golang autocomplete) settings
 let g:python3_host_prog = '/usr/bin/python3' " recommended to improve boot times
