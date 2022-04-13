@@ -251,6 +251,7 @@ let g:go_gocode_propose_source=0
 " enable synstatic checkers for golang
 let g:syntastic_go_checkers=['go', 'gofmt', 'govet', 'golangci_lint' ]
 let g:syntastic_mode_map={ 'mode': 'active' }
+let g:go_list_type = "quickfix"
 
 " deoplete (golang autocomplete) settings
 let g:python3_host_prog = '/usr/bin/python3' " recommended to improve boot times

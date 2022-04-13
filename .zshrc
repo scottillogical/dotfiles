@@ -2,12 +2,14 @@
 source ~/dotfiles/antigen.zsh
 antigen use oh-my-zsh
 antigen theme robbyrussell
+antigen bundle MichaelAquilina/zsh-auto-notify
 antigen bundle git
 antigen bundle kube-ps1
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle ruby
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle robbyrussell/oh-my-zsh plugins/z
+antigen bundle desyncr/auto-ls
 antigen bundle
 antigen apply
 
@@ -20,7 +22,6 @@ export KUBE_PS1_SYMBOL_ENABLE=false
 
 # Override entire prompt expressly to override the directories shown to 3 instead of the default 1
 # Also prepend k8s context
-PROMPT='$(kube_ps1)%(?:%{%}➜ :%{%}➜ ) %{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
 
 DISABLE_AUTO_TITLE=true
 
@@ -110,3 +111,9 @@ autoload -U compinit; compinit
 source <(savkube completion zsh)
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
+
+PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)
+$| "
+
+plugins=(auto-notify $plugins)
+export AUTO_NOTIFY_THRESHOLD=20
