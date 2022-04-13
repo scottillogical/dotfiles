@@ -84,9 +84,6 @@ SAVEHIST=30000000
 export AWS_PAGER=""
 alias k=kubectl
 
-export GONOSUMDB=stash.zipcar.com/*
-export GOPRIVATE=stash.zipcar.com/*
-
 # https://blog.mact.me/2012/09/06/using-watch-with-a-bash-alias
 alias watch='watch '
 
@@ -114,6 +111,4 @@ antigen apply
 
 PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)
 $| "
-
-plugins=(auto-notify $plugins)
 export AUTO_NOTIFY_THRESHOLD=20
