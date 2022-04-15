@@ -3,6 +3,7 @@ source ~/dotfiles/antigen.zsh
 antigen use oh-my-zsh
 antigen theme robbyrussell
 antigen bundle MichaelAquilina/zsh-auto-notify
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
 antigen bundle kube-ps1
 antigen bundle zsh-users/zsh-autosuggestions
@@ -92,7 +93,7 @@ alias typora="open -a typora"
 
 
 # Use colorized diffs with kubctl
-#export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
+export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/scottschulthess/.sdkman"
@@ -106,9 +107,8 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 autoload -U compinit; compinit
 source <(savkube completion zsh)
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen apply
 
 PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)
 $| "
-export AUTO_NOTIFY_THRESHOLD=20
+export AUTO_NOTIFY_THRESHOLD=35
+PROMPT='$(kube_ps1)'$PROMPT
