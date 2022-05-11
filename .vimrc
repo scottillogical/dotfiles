@@ -32,9 +32,9 @@ Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'altercation/vim-colors-solarized'
-
-
 call plug#end()
+
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 let g:deoplete#enable_at_startup = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
@@ -306,3 +306,7 @@ set spelllang=en
 set spellfile=~/.vim/spell/en.utf-8.add
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
+
+syntax enable
+set background=light
+colorscheme solarized

@@ -10,7 +10,6 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle ruby
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle robbyrussell/oh-my-zsh plugins/z
-antigen bundle desyncr/auto-ls
 antigen bundle
 antigen apply
 
@@ -34,11 +33,8 @@ export EDITOR=$VISUAL
 export PATH="/usr/local/sbin:$PATH"
 export PATH=~/bin:$PATH
 export GO_ROOT=/usr/local
-export GEM_SOURCE=http://yarp.dev
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+#export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 alias python=python3
 
@@ -108,7 +104,14 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 autoload -U compinit; compinit
 source <(savkube completion zsh)
 
-PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)
+PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} "'$(git_prompt_info)'"
 $| "
 export AUTO_NOTIFY_THRESHOLD=35
-PROMPT='$(kube_ps1)'$PROMPT
+
+alias nvim=vim
+
+alias vkustomize=kustomize
+
+export GOPATH=$HOME/go
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
