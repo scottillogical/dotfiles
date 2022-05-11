@@ -1,6 +1,7 @@
 set  nocompatible              " be iMproved, required
 " disabled because it highlights too miuch
-call plug#begin('~/.vim/plugged')
+call plug#begin()
+
 Plug 'hashivim/vim-terraform'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'majutsushi/tagbar'

@@ -7,7 +7,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
 antigen bundle kube-ps1
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle ruby
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle robbyrussell/oh-my-zsh plugins/z
 antigen bundle
@@ -26,7 +25,7 @@ export KUBE_PS1_SYMBOL_ENABLE=false
 DISABLE_AUTO_TITLE=true
 
 # set editor to vim
-export VISUAL=nvim
+export VISUAL=vim
 export EDITOR=$VISUAL
 
 # add sbin to path
