@@ -19,9 +19,6 @@ export KUBE_PS1_SEPARATOR=''
 export KUBE_PS1_SYMBOL_DEFAULT=''
 export KUBE_PS1_SYMBOL_ENABLE=false
 
-# Override entire prompt expressly to override the directories shown to 3 instead of the default 1
-# Also prepend k8s context
-
 DISABLE_AUTO_TITLE=true
 
 # set editor to vim
@@ -33,8 +30,7 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH=~/bin:$PATH
 export GO_ROOT=/usr/local
 
-#export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-
+#snek
 alias python=python3
 
 command_exists () {

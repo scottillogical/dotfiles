@@ -1,5 +1,5 @@
 set  nocompatible              " be iMproved, required
-" disabled because it highlights too miuch
+" disabled because it highlights too much
 call plug#begin()
 
 Plug 'hashivim/vim-terraform'
@@ -19,7 +19,6 @@ Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -126,6 +125,7 @@ au FileType go nmap <Leader>gs :GoGuruScope stash.zipcar.com/scm/sav/savannah.gi
 
 
 set wildignore+=vendor/rails/**
+set wildignore+=vendor
 set wildignore+=vendor/cache/**
 set wildignore+=vendor/bundle/**
 set wildignore+=vendor/ruby/**
@@ -218,8 +218,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_enable_go_checker = 1
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 autocmd BufWritePre * :%s/\s\+$//e
 "if !has('nvim')
 "  set viminfo+=n~/vim/viminfo
@@ -247,13 +245,14 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
+let g:go_gopls_enabled = 1
+"let g:auto_save = 1  " go enable AutoSave on Vim startup
+"let g:syntastic_enable_go_checker = 1
+"let g:syntastic_go_checkers=['go', 'gofmt', 'govet', 'golangci_lint' ]
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+"let g:go_list_type = "quickfix"
 
-
-" enable synstatic checkers for golang
-let g:syntastic_go_checkers=['go', 'gofmt', 'govet', 'golangci_lint' ]
-let g:syntastic_mode_map={ 'mode': 'active' }
-let g:go_list_type = "quickfix"
-
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 " deoplete (golang autocomplete) settings
 let g:python3_host_prog = '/usr/bin/python3' " recommended to improve boot times
 let g:deoplete#enable_at_startup = 0 " don't use deoplete at startup because it's so slow
@@ -277,14 +276,13 @@ set clipboard=unnamed
 set complete+=kspell
 let g:yankring_clipboard_monitor=0
 
-set iskeyword-=. " Make sure the word seperator includes period
+set iskeyword-=. " Make sure the word separator includes period
 
 set re=1
 set ttyfast
 set lazyredraw
 
 
-let g:auto_save = 1  " enable AutoSave on Vim startup
 
 
 " javascript syntastic
@@ -292,9 +290,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'yarn run eslint --'
 
 
-" ignore node modules
-"
-let g:go_gopls_enabled = 1
 colorscheme zellner
 
 
