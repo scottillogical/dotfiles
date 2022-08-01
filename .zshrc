@@ -96,12 +96,18 @@ source ~/dotfiles/.privaterc
 
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
+# Enable zsh autocompletion
 autoload -U compinit; compinit
 source <(savkube completion zsh)
 
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} "'$(git_prompt_info)'"
 $| "
+
+# ZSH Auto Notify https://github.com/MichaelAquilina/zsh-auto-notify
 export AUTO_NOTIFY_THRESHOLD=35
+AUTO_NOTIFY_IGNORE+=("tmux")
+AUTO_NOTIFY_IGNORE+=("fly")
 
 alias nvim=vim
 
