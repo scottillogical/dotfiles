@@ -116,3 +116,11 @@ alias vkustomize=kustomize
 export GOPATH=$HOME/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+PROMPT='$(kube_ps1)'$PROMPT
+
+export GO11MODULE=on
+
+# Configure java
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+export JAVA_HOME="$(jenv prefix)"
