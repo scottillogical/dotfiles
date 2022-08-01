@@ -107,6 +107,7 @@ $| "
 # ZSH Auto Notify https://github.com/MichaelAquilina/zsh-auto-notify
 export AUTO_NOTIFY_THRESHOLD=35
 AUTO_NOTIFY_IGNORE+=("tmux")
+AUTO_NOTIFY_IGNORE+=("git")
 AUTO_NOTIFY_IGNORE+=("fly")
 
 alias nvim=vim
