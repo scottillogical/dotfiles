@@ -73,6 +73,10 @@ set undodir=~/.vim/tmp
 " Status bar customization
 set laststatus=2
 
+
+" Remove ALL autocommands for the current group.
+autocmd!
+
 " Text Formatting
 syntax on
 set autoindent             " automatic indent new lines
