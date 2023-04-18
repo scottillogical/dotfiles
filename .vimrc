@@ -119,6 +119,8 @@ map <leader>n :NERDTreeToggle<CR>
 map <leader>m @:<CR> " repeat last command
 noremap <leader>r :GoRun %<CR> "  go run current file
 noremap <Leader>a :Ack <cword><cr> # Ack curent word
+noremap <Leader>gf :GoFmt<CR>
+
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>gc <Plug>(go-callers)
 au FileType go nmap <leader>gt <Plug>(go-test)
@@ -310,3 +312,5 @@ autocmd FileType gitcommit setlocal spell
 syntax enable
 set background=light
 colorscheme solarized
+
+let g:go_fmt_autosave = 0

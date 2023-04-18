@@ -94,7 +94,7 @@ export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"
 
 source ~/dotfiles/.privaterc
 
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
+export DOCKER_DEFAULT_PLATFORM=linux/arm64
 
 # Enable zsh autocompletion
 autoload -U compinit; compinit
@@ -115,7 +115,6 @@ alias nvim=vim
 alias vkustomize=kustomize
 
 export GOPATH=$HOME/go
-export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 PROMPT='$(kube_ps1)'$PROMPT
 
@@ -126,3 +125,5 @@ export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 export JAVA_HOME="$(jenv prefix)"
 
+
+alias kubectl="kubecolor"
