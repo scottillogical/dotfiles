@@ -94,8 +94,6 @@ export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"
 
 source ~/dotfiles/.privaterc
 
-export DOCKER_DEFAULT_PLATFORM=linux/arm64
-
 # Enable zsh autocompletion
 autoload -U compinit; compinit
 source <(savkube completion zsh)
@@ -114,16 +112,26 @@ alias nvim=vim
 
 alias vkustomize=kustomize
 
-export GOPATH=$HOME/go
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 PROMPT='$(kube_ps1)'$PROMPT
 
-export GO11MODULE=on
 
 # Configure java
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
-export JAVA_HOME="$(jenv prefix)"
 
 
 alias kubectl="kubecolor"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+PATH=$PATH:$(pyenv root)/shims
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+export DOCKER_BUILDKIT=1
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+#https://github.com/rbenv/ruby-build/issues/1691
+export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
