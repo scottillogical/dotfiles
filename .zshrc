@@ -59,7 +59,6 @@ export GO111MODULE=on
 
 # Go version manage
 source ~/.gvm/scripts/gvm
-
 autoload -U colors; colors
 
 # Kube completion
@@ -115,7 +114,6 @@ PROMPT='$(kube_ps1)'$PROMPT
 # Configure java
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
-#export JAVA_HOME="$(jenv prefix)"
 
 
 alias kubectl="kubecolor"
