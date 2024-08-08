@@ -45,7 +45,7 @@ alias cd='cd -P'
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/Users/scottschulthess/Library/Python/3.8/bin:$PATH"
+export PATH="~/Library/Python/3.8/bin:$PATH"
 
 # Node version manager
 export NVM_DIR="$HOME/.nvm"
@@ -58,7 +58,7 @@ export PATH=$GOPATH/bin:$PATH
 export GO111MODULE=on
 
 # Go version manage
-source /Users/scottschulthess/.gvm/scripts/gvm
+source ~/.gvm/scripts/gvm
 
 autoload -U colors; colors
 
@@ -86,15 +86,10 @@ alias typora="open -a typora"
 # Use colorized diffs with kubctl
 export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/scottschulthess/.sdkman"
 
-[[ -s "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/scottschulthess/.sdkman/bin/sdkman-init.sh"
-export GRADLE_HOME="/Users/scottschulthess/.sdkman/candidates/gradle/current"
+export GRADLE_HOME="~/.sdkman/candidates/gradle/current"
 
 source ~/dotfiles/.privaterc
-
-export DOCKER_DEFAULT_PLATFORM=linux/arm64
 
 # Enable zsh autocompletion
 autoload -U compinit; compinit
@@ -114,16 +109,32 @@ alias nvim=vim
 
 alias vkustomize=kustomize
 
-export GOPATH=$HOME/go
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 PROMPT='$(kube_ps1)'$PROMPT
 
-export GO11MODULE=on
 
 # Configure java
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
-export JAVA_HOME="$(jenv prefix)"
+#export JAVA_HOME="$(jenv prefix)"
 
 
 alias kubectl="kubecolor"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+PATH=$PATH:$(pyenv root)/shims
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+export DOCKER_BUILDKIT=1
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+#https://github.com/rbenv/ruby-build/issues/1691
+export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
+
+# SDK man
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="~/.sdkman"
+[[ -s "~/sdkman/bin/sdkman-init.sh" ]] && source "/.sdkman/bin/sdkman-init.sh"

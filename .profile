@@ -8,6 +8,6 @@ if [ -f /opt/local/etc/bash_completion ]; then
 fi
 
 
-export PATH=/Users/sschulthess/bin:$PATH
+export PATH="~/bin":$PATH
 export PAGER=less
 export LESS="-iMSx4 -FX"

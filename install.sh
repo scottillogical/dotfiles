@@ -1,13 +1,5 @@
 #!/bin/bash
 
-if [ -x sdk ]; then
-  curl -s "https://get.sdkman.io" | bash
-else
-  echo "[sdk] detected "
-fi
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install gradle 6.1
-
 if ! command -v brew &> /dev/null
 then
   echo "[brew] installing"
@@ -24,16 +16,20 @@ else
   echo "[safe] detected"
 fi
 
-brew install jenv
-brew install coreutils
-brew install gnu-sed
-brew install git
-brew install kustomize
-brew install colordiff
-brew install vault
-brew install tmux
-brew install go
-brew install python
+brew install jenv \
+ coreutils \
+ coreutils \
+ gnu-sed   \
+ git   \
+ kustomize \
+ colordiff \
+ vault   \
+ tmux   \
+ go   \
+ ag \
+ pyenv \
+ awscli  \
+ python
 
 
 echo "install vim-plug"

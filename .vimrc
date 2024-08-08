@@ -63,7 +63,6 @@ set encoding=utf-8
 command E Explore
 
 " Tell vim where it put stuff
-set backupdir=~/.vim/tmp
 set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
@@ -207,7 +206,6 @@ let g:airline_section_b   =''
 let g:syntastic_sh_checkers = ['shellcheck', 'sh']
 
 " Syntastic ruby
-" /Users/scottschulthess/.rbenv/shims/ruby
 let g:syntastic_ruby_checkers = ['mri']
 
 
@@ -240,8 +238,8 @@ let g:ctrlp_map = '<c-d>'
 let g:ctrlp_cmd = 'CtrlD'
 
 " ========== VIM-GO PLUGIN ==========
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
+let g:go_highlight_functions = 0
+let g:go_highlight_function_calls = 0
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
@@ -314,3 +312,13 @@ set background=light
 colorscheme solarized
 
 let g:go_fmt_autosave = 0
+
+
+" Recognize typescript
+" https://github.com/leafgarland/typescript-vim/issues/158
+set filetype=typescript
+augroup SyntaxSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+  autocmd BufNewFile,BufRead *.test.tsx set filetype=typescript
+augroup END
