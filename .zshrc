@@ -58,7 +58,7 @@ export PATH=$GOPATH/bin:$PATH
 export GO111MODULE=on
 
 # Go version manage
-source ~/.gvm/scripts/gvm
+#source ~/.gvm/scripts/gvm
 autoload -U colors; colors
 
 # Kube completion

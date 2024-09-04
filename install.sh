@@ -19,6 +19,9 @@ fi
 brew install jenv \
  coreutils \
  coreutils \
+ jq \
+ yq \
+
  gnu-sed   \
  git   \
  kustomize \
@@ -30,6 +33,9 @@ brew install jenv \
  pyenv \
  awscli  \
  python
+
+brew tap starkandwayne/cf; brew install spruce
+
 
 
 echo "install vim-plug"
