@@ -18,10 +18,8 @@ fi
 
 brew install jenv \
  coreutils \
- coreutils \
  jq \
  yq \
-
  gnu-sed   \
  git   \
  kustomize \
