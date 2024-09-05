@@ -22,6 +22,7 @@ brew install jenv \
  kubectl \
  yq \
  gnu-sed   \
+ kubecolor \
  git   \
  kustomize \
  colordiff \
