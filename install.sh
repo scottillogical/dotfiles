@@ -19,6 +19,7 @@ fi
 brew install jenv \
  coreutils \
  jq \
+ kubectl \
  yq \
  gnu-sed   \
  git   \
