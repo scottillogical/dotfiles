@@ -3,6 +3,7 @@ mv ~/.bashrc ~/.bashrc.bak
 set -eoux
 mkdir -p ~/bin
 
+
 ln -fs ~/dotfiles/.ackrc ~/.ackrc
 ln -fs ~/dotfiles/.vimrc ~/.vimrc
 ln -fs ~/dotfiles/.bashrc ~/.bashrc
