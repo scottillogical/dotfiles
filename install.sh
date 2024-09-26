@@ -18,6 +18,7 @@ brew install jenv \
  pyenv \
  awscli  \
  starkandwayne/cf/spruce \
+ rbenv \
  python
 
 brew install --cask fly
