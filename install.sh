@@ -21,6 +21,7 @@ brew install jenv \
  rbenv \
  yarn \
  corretto@8 \
+ sdkman/sdkman-cli \
  python
 
 brew install --cask fly
