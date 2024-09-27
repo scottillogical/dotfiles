@@ -15,13 +15,12 @@ brew install jenv \
  go   \
  helm \
  ag \
+ watch \
  pyenv \
  awscli  \
  starkandwayne/cf/spruce \
  rbenv \
  yarn \
- corretto@8 \
- sdkman/sdkman-cli \
  python
 
 brew install --cask fly

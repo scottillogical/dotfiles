@@ -88,6 +88,7 @@ export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 
 
 export GRADLE_HOME="~/.sdkman/candidates/gradle/current"
+#
 
 source ~/dotfiles/.privaterc
 
@@ -133,7 +134,5 @@ export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 
-# SDK man
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="~/.sdkman"
-[[ -s "~/sdkman/bin/sdkman-init.sh" ]] && source "/.sdkman/bin/sdkman-init.sh"
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+source "$HOME/.sdkman/bin/sdkman-init.sh"
