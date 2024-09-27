@@ -3,6 +3,7 @@ brew install jenv \
  coreutils \
  jq \
  terminal-notifier \
+ wget \
  kubectl \
  yq \
  gnu-sed   \
