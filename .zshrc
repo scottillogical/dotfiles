@@ -92,9 +92,6 @@ export GRADLE_HOME="~/.sdkman/candidates/gradle/current"
 
 source ~/dotfiles/.privaterc
 
-# Enable zsh autocompletion
-autoload -U compinit; compinit
-source <(savkube completion zsh)
 
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} "'$(git_prompt_info)'"
@@ -134,5 +131,9 @@ export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 
+# pipx
+export PATH="$HOME/.local/bin:$PATH"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="$HOME/bin:$PATH"
