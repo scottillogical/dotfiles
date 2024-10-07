@@ -2,6 +2,8 @@
 brew install jenv \
  coreutils \
  jq \
+ th-ch/youtube-music/youtube-music \
+ bluesnooze \
  terminal-notifier \
  wget \
  kubectl \

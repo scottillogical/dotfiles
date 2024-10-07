@@ -27,7 +27,6 @@ export EDITOR=$VISUAL
 
 # add sbin to path
 export PATH="/usr/local/sbin:$PATH"
-export PATH="~/bin:$PATH"
 export GO_ROOT=/usr/local
 
 #snek
