@@ -108,8 +108,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Leader maps
 " =================================================
-nmap <F7> :cp^M
-nmap <F8> :cn^M
+map <leader>c :cn<CR> " Quickfix Next
 let mapleader = ","
 map <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :CtrlP<CR>
