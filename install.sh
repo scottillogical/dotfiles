@@ -5,6 +5,7 @@ brew install jenv \
  th-ch/youtube-music/youtube-music \
  bluesnooze \
  terminal-notifier \
+ pre-commit \
  wget \
  kubectl \
  yq \
