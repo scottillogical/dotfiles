@@ -43,7 +43,8 @@ fi
 alias cd='cd -P'
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="~/Library/Python/3.8/bin:$PATH"
 
 # Node version manager
@@ -92,7 +93,6 @@ export GRADLE_HOME="~/.sdkman/candidates/gradle/current"
 source ~/dotfiles/.privaterc
 
 
-PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} "'$(git_prompt_info)'"
 $| "
 

@@ -2,7 +2,7 @@
 brew install jenv \
  coreutils \
  jq \
- th-ch/youtube-music/youtube-music \
+ kyverno \
  bluesnooze \
  terminal-notifier \
  pre-commit \
@@ -25,7 +25,15 @@ brew install jenv \
  starkandwayne/cf/spruce \
  rbenv \
  yarn \
- python
+ python \
+ findutils \
+ gnu-tar \
+ gnu-sed \
+ gawk \
+ gnutls \
+ gnu-indent \
+ gnu-getopt \
+ grep
 
 jenv enable-plugin export #https://stackoverflow.com/questions/28615671/set-java-home-to-reflect-jenv-java-version
 
