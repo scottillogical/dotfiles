@@ -6,6 +6,7 @@ mkdir -p ~/bin
 
 ln -fs ~/dotfiles/.ackrc ~/.ackrc
 ln -fs ~/dotfiles/.vimrc ~/.vimrc
+ln -fs ~/dotfiles/.sleep ~/.sleep
 ln -fs ~/dotfiles/.bashrc ~/.bashrc
 ln -fs ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/dotfiles/.gitconfig ~/.gitconfig

@@ -1,0 +1,3 @@
+#!/bin/bash
+osascript -e 'quit app "AWS VPN Client"'
+osascript -e 'quit app "zoom.us"'

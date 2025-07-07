@@ -1,11 +1,13 @@
 # ANTIGEN CONFIG BELOW
 alias k=kubectl
 alias s=savkube
+alias nvim=vim
 source ~/dotfiles/antigen.zsh
 antigen use oh-my-zsh
 antigen theme robbyrussell
 antigen bundle MichaelAquilina/zsh-auto-notify
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle romkatv/zsh-defer
 antigen bundle git
 antigen bundle kube-ps1
 antigen bundle zsh-users/zsh-autosuggestions
@@ -88,7 +90,7 @@ export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 export GRADLE_HOME="~/.sdkman/candidates/gradle/current"
 #
 
-source ~/dotfiles/.privaterc
+source ~/.privaterc
 
 
 PROMPT="$(kube_ps1)%(?:%{%}➜ :%{%}➜)%{$fg[cyan]%}%~%{$reset_color%} "'$(git_prompt_info)'"
@@ -100,7 +102,6 @@ AUTO_NOTIFY_IGNORE+=("tmux")
 AUTO_NOTIFY_IGNORE+=("git")
 AUTO_NOTIFY_IGNORE+=("fly")
 
-alias nvim=vim
 
 alias vkustomize=kustomize
 
@@ -141,6 +142,8 @@ load-nvmrc() {
   local nvmrc_path
   nvmrc_path="$(nvm_find_nvmrc)"
 
+  echo $nvmrc_path
+  echo "$(nvm version)"
   if [ -n "$nvmrc_path" ]; then
     local nvmrc_node_version
     nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
@@ -154,7 +157,10 @@ load-nvmrc() {
     echo "Reverting to nvm default version"
     nvm use default
   fi
+  echo "done"
 }
 
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+COMPOSE_BAKE=true
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
