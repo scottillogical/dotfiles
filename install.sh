@@ -7,7 +7,6 @@ brew install jenv \
  terminal-notifier \
  pre-commit \
  wget \
- sleepwatcher \
  pyvim \
  curl \
  kubectl \
